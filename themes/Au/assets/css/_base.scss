@@ -3,28 +3,35 @@
 @use 'variables' as vars;
 
 // ---------------------------------------------
-// 1. ROOT & BODY STYLES
+// 1. ROOT & BODY STYLES (Global Resets and Fluid Sizing)
 // ---------------------------------------------
 
-// FLUID ROOT FONT SIZE (IA.NET PRINCIPLE)
+body {
+ background-color: vars.$charcoal-dark;
+
+ /* Define the image source and set it to repeat */
+ background-image: url('/vange-jewelry-stroke-version.svg');
+ background-repeat: repeat;
+ background-blend-mode: luminosity;
+ background-size: 35px 35px;
+ background-attachment: fixed;
+
+ //backdrop-filter: blur(5px);
+
+ border: 0;
+ margin: 0;
+ padding: 0;
+}
+
 html {
-    font-size: clamp(16px, 1.5vw, 22px); 
-    
-    // Use vars. namespace for global defaults
+  // Sets the fluid scaling for all 'em' units 
+  font-size: clamp(16px, 1.5vw, 22px); 
     font-family: vars.$font-sans;
     color: vars.$text-light; 
 }
 
-// Global reset
-body {
-    background-color: vars.$charcoal-dark;
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
 // ---------------------------------------------
-// 2. GLOBAL TYPOGRAPHY & LINKS
+// 2. GLOBAL TYPOGRAPHY, LISTS, & LINKS
 // ---------------------------------------------
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,13 +44,22 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     font-family: vars.$font-sans;
-    font-weight: 300; 
+    font-weight: 300;
     line-height: 1.5em; 
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 1em auto;
+    
+    /* Constrain line length (IA principle) */
+    max-width: vars.$optimal-measure; 
+    text-align: justify;
+    font-size: 0.85em;
 }
 
-// Global Link Styles
+ul, ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
 a {
     color: vars.$gold-accent;
     text-decoration: none;
@@ -58,11 +74,4 @@ a:hover {
 a:visited {
     color: vars.$text-muted;
     font-style: normal;
-}
-
-// List resets
-ul, ol {
-    list-style-type: none;
-    padding-left: 0;
-    margin-left: 0;
 }

@@ -24,11 +24,28 @@
             {{ $page.Content }}
         </div>
 
-        {{ with $page.Params.image_main }}
-            <figure class="featured-image">
-                <img alt="{{ $page.Params.alt_text | default $page.Title }}" src="{{ . | relURL }}">
-            </figure>
-        {{ end }}
+        {{/* In layouts/creations/single.html */}}
+
+{{ with .Params.image_main }}
+    {{/* 1. Get the image resource using the path from Front Matter */}}
+    {{- $imgResource := $.Page.Resources.GetMatch . -}}
+
+    {{- if $imgResource }}
+        {{/* 2. Process the image to create responsive sizes */}}
+        {{- $small := $imgResource.Resize "600x" -}}
+        {{- $medium := $imgResource.Resize "1200x" -}}
+        {{- $srcset := printf "%s %dw, %s %dw" $small.RelPermalink $small.Width $medium.RelPermalink $medium.Width -}}
+
+        <figure class="featured-image">
+            <img 
+                src="{{ $small.RelPermalink }}"  
+                srcset="{{ $srcset }}" 
+                sizes="(max-width: 800px) 100vw, 900px"
+                alt="{{ $.Params.alt_text | default $.Title }}"
+            />
+        </figure>
+    {{ end }}
+{{ end }}
         
         <h3 class="technical-heading">Materials & Techniques</h3>
 

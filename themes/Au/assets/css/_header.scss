@@ -6,27 +6,46 @@
 // 1. OUTER HEADER CONTAINER (Sticky, Full-Width Background)
 // ---------------------------------------------
 header {
-    background-color: vars.$charcoal-dark;
+    /* Background Color: Use RGBA for transparency */
+    background-color: rgba(28, 28, 28, 0.85); 
+    
+    /* Optional: "Frosted glass" effect */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
     margin: 0;
+    border-bottom: 0.1em solid vars.$gold-accent;
     
     // Core properties for the sticky strip
     position: sticky; 
     top: 0;
     z-index: 1000;
     
+    /* Desktop default padding (Horizontal padding will be applied by media query) */
     padding: 0.25em 0; 
+
+    // MOBILE DEFAULT: Vertical stack 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    
+    @media (min-width: vars.$breakpoint-tablet) {
+        /* CRITICAL FIX: Make the header the main Flex container on desktop */
+        flex-direction: row; 
+        justify-content: space-between; /* Pushes Logo/Title left, Nav right */
+        
+        /* Ensure horizontal padding is applied on the sides of the sticky bar */
+        padding: 0.25em 1.5em; 
+    }
     
     @media (max-width: vars.$breakpoint-tablet) {
-        /* On small screens, allow elements to stack */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        /* Mobile Vertical Stack Padding */
         padding: 0.5em 0;
     }
 }
 
 // ---------------------------------------------
-// 2. INNER HEADER WRAPPER (.header-inner) - Constrained Layout
+// 2. INNER HEADER WRAPPER (.header-inner) - Constrains Max-Width ONLY
 // ---------------------------------------------
 .header-inner {
     /* Constrains content to max-width and centers it horizontally */
@@ -34,16 +53,14 @@ header {
     margin: 0 auto; 
     width: 100%;
     
-    /* Flex container for horizontal alignment */
-    display: flex;
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: space-between; 
+    /* CRITICAL FIX: REMOVE DISPLAY FLEX. The <header> is the Flex container. */
+    /* This wrapper now only sets up width constraints. */
     
+    /* Horizontal padding applied here to ensure space inside the constrained block */
     padding: 0 vars.$spacing-md; 
     
     @media (max-width: vars.$breakpoint-tablet) {
-        /* On mobile, remove flex properties and allow elements to stack normally */
+        /* On mobile, allow inner elements to stack normally */
         display: block; 
         padding: 0 vars.$spacing-md;
         text-align: center;
@@ -54,6 +71,7 @@ header {
 // 3. LOGO AND TITLE GROUPING
 // ---------------------------------------------
 .logo-and-title {
+    /* This grouping is a sub-Flex container */
     display: flex;
     align-items: center;
     flex: 0 1 auto; 
@@ -68,27 +86,25 @@ header {
 }
 
 // ---------------------------------------------
-// 4. LOGO IMAGE STYLING
+// 4. LOGO IMAGE & SITE TITLE (H1) STYLING
 // ---------------------------------------------
 header img {
-    width: 15vw; 
+    /* Consolidated and robust sizing for the image */
+    width: 15vw;
     height: auto;
-    max-height: 24px; 
-    max-width: 250px; 
+    max-height: 1.5em;
+    max-width: 250px;
     min-width: 80px;
     display: inline-block;
     margin: 0;
 }
 
-// ---------------------------------------------
-// 5. SITE TITLE (H1) STYLING
-// ---------------------------------------------
-header > h1 {
+.site-title {
     color: vars.$gold-accent;
-    font-family: vars.$font-serif;
+    font-family: vars.$font-logo;
     font-size: 1em; 
-    letter-spacing: 0.08em; 
-    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    //text-transform: uppercase;
     white-space: nowrap;
     
     margin: 0;

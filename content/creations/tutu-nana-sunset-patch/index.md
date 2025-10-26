@@ -10,15 +10,13 @@ weight_grams = '25g'
 status = 'Available'
 price = 0.00
 summary = 'A brief, elegant description for the gallery listing.'
-image_main = 'path/to/main_photo.jpg'
+image_main = 'images/tutu-nana-sunset-patch-worn.jpg'
 alt_text = 'Tutu Nana Sunset Patch - Main photo'
 +++
 
 ### Design Philosophy
 
 This piece was inspired by military patches and my partner. The composition is designed to evoke our practice of enjoying sunsets together.
-
-{{< postimage "images/tutu-nana-sunset-patch.jpg" "Tu-Tu & Na-Na Sunset Patch">}}
 
 ## Technique Spotlight
 

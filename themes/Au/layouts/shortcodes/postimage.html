@@ -1,41 +1,36 @@
-{{/* .Get 0 is the image path (e.g., "images/my-ring.jpg") */}}
+{{/* 1. Define image path and alt text */}}
 {{- $path := .Get 0 -}}
-{{/* .Get 1 is the alt text and caption */}}
 {{- $alt := .Get 1 -}}
 
 {{- with $.Page.Resources.GetMatch $path }}
-  {{- $image := . -}}
+    {{- $image := . -}}
 
-  {{/* 1. Generate the different image sizes using Hugo's processing functions */}}
-  {{- $small := $image.Resize "600x" -}}      {{- $medium := $image.Resize "1200x" -}}    {{- $large := $image.Resize "1800x" -}}     {{/* 2. Construct the srcset string (URL + width descriptor) */}}
-  {{- $srcset := printf "%s %dw, %s %dw, %s %dw" 
-    $small.RelPermalink $small.Width 
-    $medium.RelPermalink $medium.Width 
-    $large.RelPermalink $large.Width 
-  -}}
+    {{/* 2. Process images to create smaller, web-optimized sizes */}}
+    {{- $small := $image.Resize "600x" -}}      
+    {{- $medium := $image.Resize "1200x" -}}    
+    {{- $large := $image.Resize "1800x" -}}     
 
-  <figure class="post-figure">
-    <a href="{{ $image.RelPermalink }}" title="{{ $alt }}">
-      
-      {{/* 3. The Responsive Image Tag */}}
-      <img 
-        src="{{ $small.RelPermalink }}"  
-        srcset="{{ $srcset }}" 
-        
-        {{/* The sizes attribute tells the browser how wide the image will be on different viewports. 
-             This is the core concept from MDN. */}}
-        sizes="(max-width: 600px) 100vw,   
-               (max-width: 1200px) 90vw,
-               1200px"                    
-        
-        alt="{{ $alt }}"
-        
-        {{/* Provide intrinsic dimensions for layout stability */}}
-        width="{{ $large.Width }}" 
-        height="{{ $large.Height }}"
-      />
-    </a>
-    
-    <figcaption>{{ $alt }}</figcaption>
-  </figure>
+    {{/* 3. Construct the srcset string */}}
+    {{- $srcset := printf "%s %dw, %s %dw, %s %dw" 
+        $small.RelPermalink $small.Width 
+        $medium.RelPermalink $medium.Width 
+        $large.RelPermalink $large.Width 
+    -}}
+
+    <figure class="post-figure">
+        <a href="{{ $image.RelPermalink }}" title="{{ $alt }}">
+            <img 
+                src="{{ $small.RelPermalink }}"  
+                srcset="{{ $srcset }}" 
+                {{/* 4. The sizes attribute tells the browser how much space the image will take */}}
+                sizes="(max-width: 600px) 100vw, 
+                       (max-width: 1200px) 90vw,
+                       1200px"
+                alt="{{ $alt }}"
+                width="{{ $large.Width }}" 
+                height="{{ $large.Height }}"
+            />
+        </a>
+        <figcaption>{{ $alt }}</figcaption>
+    </figure>
 {{- end }}

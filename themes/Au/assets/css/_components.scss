@@ -255,3 +255,14 @@ figcaption {
         max-width: none; /* Override measure constraint for the summary */
     }
 }
+
+// In _components.scss
+
+img {
+    /* Ensures the image never exceeds the width of its parent container */
+    max-width: 100%; 
+    /* Maintains aspect ratio when scaling */
+    height: auto;   
+    /* Vertical alignment for images that might be inline content (e.g., logos) */
+    vertical-align: middle; 
+}

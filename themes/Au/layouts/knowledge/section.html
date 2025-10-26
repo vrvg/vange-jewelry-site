@@ -1,0 +1,39 @@
+{{ define "main" }}
+<section class="knowledge-index-section">
+    <h2 class="list-heading">Technical Knowledge Index</h2>
+    <p>Browse my findings and technical documentation by core material or technique.</p>
+    
+    <div class="taxonomy-grid">
+        
+        {{/* 1. LIST ALL MATERIALS INDEX PAGES */}}
+        <div class="taxonomy-block">
+            <h3>By Material</h3>
+            <ul class="clean-list">
+                {{ range $key, $value := .Site.Taxonomies.materials }}
+                    {{/* $key is the material name (e.g., sterling-silver), $value is the collection */}}
+                    <li>
+                        <a href="{{ .Page.RelPermalink | safeURL }}" class="tag">
+                            {{ .Page.Title }} ({{ $value.Count }})
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+
+        {{/* 2. LIST ALL TECHNIQUES INDEX PAGES */}}
+        <div class="taxonomy-block">
+            <h3>By Technique</h3>
+            <ul class="clean-list">
+                {{ range $key, $value := .Site.Taxonomies.techniques }}
+                    <li>
+                        <a href="{{ .Page.RelPermalink | safeURL }}" class="tag">
+                            {{ .Page.Title }} ({{ $value.Count }})
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+
+    </div>
+</section>
+{{ end }}
