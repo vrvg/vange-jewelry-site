@@ -1,0 +1,64 @@
+// themes/Au/assets/css/_nav.scss
+
+@use 'variables' as vars;
+
+// ---------------------------------------------
+// NAVIGATION CONTAINER (main-nav)
+// ---------------------------------------------
+
+.main-nav {
+    background-color: vars.$charcoal-dark; 
+    color: vars.$text-light;
+    font-family: vars.$font-sans;
+    
+    border-bottom: 0.1em solid vars.$gold-accent;
+    
+    flex: 1 1 auto;
+    width: auto;
+    margin: 0 auto;
+}
+
+// ---------------------------------------------
+// LIST OF LINKS (ul) - DEFAULT (HORIZONTAL STRIP)
+// ---------------------------------------------
+
+.main-nav > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    
+    // Horizontal layout on ALL devices
+    flex-direction: row; 
+    
+    justify-content: flex-end; 
+    
+    gap: 1.5em; 
+    
+    @media (max-width: vars.$breakpoint-tablet) {
+        /* Center the group of links on small screens */
+        justify-content: center; 
+    }
+}
+
+nav > ul > li {
+    flex: none; 
+    text-align: center;
+    padding: 0 0.5em; 
+}
+
+nav > ul > li > a {
+    color: vars.$text-light;
+    text-decoration: none;
+    font-size: 1em; 
+    
+    &:hover {
+        color: vars.$gold-accent;
+    }
+}
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .main-nav {
+        border-bottom: none; 
+    }
+}

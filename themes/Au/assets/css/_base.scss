@@ -1,0 +1,68 @@
+// themes/Au/assets/css/_base.scss
+
+@use 'variables' as vars;
+
+// ---------------------------------------------
+// 1. ROOT & BODY STYLES
+// ---------------------------------------------
+
+// FLUID ROOT FONT SIZE (IA.NET PRINCIPLE)
+html {
+    font-size: clamp(16px, 1.5vw, 22px); 
+    
+    // Use vars. namespace for global defaults
+    font-family: vars.$font-sans;
+    color: vars.$text-light; 
+}
+
+// Global reset
+body {
+    background-color: vars.$charcoal-dark;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+// ---------------------------------------------
+// 2. GLOBAL TYPOGRAPHY & LINKS
+// ---------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: vars.$font-serif;
+    color: vars.$gold-accent;
+    line-height: 1.2;
+    margin-top: 1.5em; 
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-family: vars.$font-sans;
+    font-weight: 300; 
+    line-height: 1.5em; 
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+// Global Link Styles
+a {
+    color: vars.$gold-accent;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: vars.$text-light;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: vars.$text-muted;
+    font-style: normal;
+}
+
+// List resets
+ul, ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}

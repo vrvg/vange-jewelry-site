@@ -1,0 +1,78 @@
+baseURL = 'https://vange.jewelry/'
+languageCode = 'en-us'
+title = 'vangeJewelry'
+
+theme = 'Au'
+
+[pagination]
+  disableAliases = false
+  pagerSize = 1
+  path = 'page'
+
+[menus]
+  [[menus.main]]
+    name = '💎 Creations'   # Text is necessary for unique pages
+    pageRef = '/creations'
+    weight = 10
+  [[menus.main]]
+    name = '🔬 Projects'    # Text is necessary for unique pages
+    pageRef = '/projects'
+    weight = 20
+  [[menus.main]]
+    name = '📝 About'       # Text is necessary for unique pages
+    pageRef = '/about'
+    weight = 30
+  [[menus.main]]
+    name = '✉️ Contact'     # Text is necessary for unique pages
+    pageRef = '/contact'
+    weight = 40
+  [[menus.main]]
+    name = '📰 Notes'
+    pageRef = '/notes'
+    weight = 50
+  [[menus.main]]
+    name = '🔍'             # ICON ONLY for Search (Universally recognized)
+    pageRef = '/search'
+    weight = 60
+  [[menus.footer]]
+    name = 'terms'
+    pageRef = '/terms'
+    weight = 10
+  [[menus.footer]]
+    name = 'privacy'
+    pageRef = '/privacy'
+    weight = 20
+
+[taxonomies]
+  tag = "tags"            # Standard: e.g., "Minimalist," "Geometric"
+  category = "categories" # Standard: e.g., "Rings," "Pendants"
+  technique = "techniques" # Custom: e.g., "Fabrication," "Casting"
+  material = "materials"   # Custom: e.g., "SterlingSilver," "14kGold"
+  year = "year"
+  month = "month"
+
+[permalinks]
+  notes = "notes/:year/:month/:slug/"
+  year = "notes/:slug/"
+  month = "notes/:slug/"
+
+[related]
+  threshold = 80.0       # Threshold for relevance (lower number = more results, less relevance)
+  includeNewer = false   # Set to true to update older pages with new content [cite: 2354]
+
+  # 1. ADD CUSTOM INDICES
+  [[related.indices]]
+    name = "materials"   # Matches pages sharing the same metal, stone, etc.
+    weight = 150.0       # High weight for strong relevance
+
+  [[related.indices]]
+    name = "techniques"  # Matches pages sharing the same technique (e.g., Fabrication, Casting)
+    weight = 100.0
+
+  # 2. KEEP DATE (or modify its weight)
+  [[related.indices]]
+    name = "date"
+    weight = 10.0        # Keeps recent content relevant, even if keywords differ
+
+  # 3. EXCLUDE DEFAULT 'keywords' (or set weight to 0.0)
+  # This makes the "keywords" front matter field optional or irrelevant.

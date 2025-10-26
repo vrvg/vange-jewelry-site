@@ -1,0 +1,40 @@
+// themes/Au/assets/css/_footer.scss
+
+@use 'variables' as vars;
+
+footer {
+    background-color: vars.$charcoal-dark; 
+    color: vars.$text-muted;
+    font-family: vars.$font-sans;
+    font-size: 0.8em;
+    
+    border-top: 0.1em solid vars.$gold-accent; 
+    
+    padding: vars.$spacing-sm 0; 
+    margin: 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0; 
+    padding: 0;
+    line-height: 1.5;
+}
+
+footer p:last-of-type {
+    margin-top: vars.$spacing-sm; 
+}
+
+footer a {
+    color: vars.$gold-accent;
+    text-decoration: none;
+    
+    &:hover {
+        color: vars.$text-light;
+        text-decoration: underline;
+    }
+}
+
+footer p img {
+    vertical-align: middle;
+}

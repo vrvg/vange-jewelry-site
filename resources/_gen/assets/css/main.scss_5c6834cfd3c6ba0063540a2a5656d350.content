@@ -1,0 +1,400 @@
+html {
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-family: "Montserrat", sans-serif;
+  color: #F7F7F7;
+}
+
+body {
+  background-color: #1C1C1C;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  color: #C79F5E;
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+a {
+  color: #C79F5E;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #F7F7F7;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #A9A9A9;
+  font-style: normal;
+}
+
+ul, ol {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  /* Gutters for mobile (when sticky header is off) */
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  text-align: left;
+  /* Added generous vertical padding for separation */
+  padding: 2em 1.5em;
+}
+
+@media (min-width: 768px) {
+  .container {
+    /* Max width for readable content (IA Principle) */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; /* Remove mobile gutters when max-width applies */
+  }
+}
+.home-links-grid {
+  /* Centering the entire section */
+  text-align: center;
+}
+
+.links-grid {
+  display: grid;
+  /* Mobile Default: Stack items in a single column */
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+@media (min-width: 768px) {
+  .links-grid {
+    /* Tablet/Desktop: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .links-grid {
+    /* Large Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.creation-container {
+  /* Mobile: Default to stacking the sections */
+  display: block;
+  padding: 1.5em 0;
+}
+
+@media (min-width: 768px) {
+  .creation-container {
+    /* Desktop: Creates the sidebar + main content structure */
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    /* Ensure layout is contained within the readable width */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+/* Sidebar Styles */
+.creation-list {
+  /* Sidebar: Fixed width for visual stability */
+  flex: 0 0 220px;
+  text-align: left;
+  padding-right: 1.5em;
+  /* Sidebar Links */
+}
+.creation-list h2 {
+  font-size: 1.2em;
+  text-align: left;
+  margin-top: 0;
+  border-bottom: 1px solid #C79F5E;
+  padding-bottom: 0.5em;
+}
+.creation-list ul a {
+  display: block;
+  padding: 0.2em 0;
+  font-size: 0.9em;
+  color: #C79F5E; /* Links should pop */
+}
+.creation-list .sidebar-separator {
+  border-bottom: 1px solid rgba(199, 159, 94, 0.4);
+  margin: 0.5em 0 1em;
+}
+.creation-list .active-sidebar-link a {
+  font-weight: 700;
+  color: #F7F7F7;
+}
+
+/* Main Content Area Styles */
+.creation {
+  /* Takes up the remaining available space */
+  flex: 1 1 auto;
+}
+
+/* Specs Grid (Materials/Techniques) */
+.specs-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allows sections to wrap on small screens */
+  gap: 1.5em;
+}
+.specs-grid div {
+  flex: 1 1 200px; /* Ensures each list can grow/shrink but has a minimum width */
+}
+
+header {
+  background-color: #1C1C1C;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.25em 0;
+}
+@media (max-width: 768px) {
+  header {
+    /* On small screens, allow elements to stack */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em 0;
+  }
+}
+
+.header-inner {
+  /* Constrains content to max-width and centers it horizontally */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  /* Flex container for horizontal alignment */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5em;
+}
+@media (max-width: 768px) {
+  .header-inner {
+    /* On mobile, remove flex properties and allow elements to stack normally */
+    display: block;
+    padding: 0 1.5em;
+    text-align: center;
+  }
+}
+
+.logo-and-title {
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  gap: 1em;
+}
+@media (max-width: 768px) {
+  .logo-and-title {
+    /* Stack logo and title vertically on small screens */
+    flex-direction: column;
+    gap: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}
+
+header img {
+  width: 15vw;
+  height: auto;
+  max-height: 24px;
+  max-width: 250px;
+  min-width: 80px;
+  display: inline-block;
+  margin: 0;
+}
+
+header > h1 {
+  color: #C79F5E;
+  font-family: "Playfair Display", serif;
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  flex: none;
+  text-align: center;
+}
+
+.main-nav {
+  background-color: #1C1C1C;
+  color: #F7F7F7;
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 0.1em solid #C79F5E;
+  flex: 1 1 auto;
+  width: auto;
+  margin: 0 auto;
+}
+
+.main-nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1.5em;
+}
+@media (max-width: 768px) {
+  .main-nav > ul {
+    /* Center the group of links on small screens */
+    justify-content: center;
+  }
+}
+
+nav > ul > li {
+  flex: none;
+  text-align: center;
+  padding: 0 0.5em;
+}
+
+nav > ul > li > a {
+  color: #F7F7F7;
+  text-decoration: none;
+  font-size: 1em;
+}
+nav > ul > li > a:hover {
+  color: #C79F5E;
+}
+
+@media (min-width: 768px) {
+  .main-nav {
+    border-bottom: none;
+  }
+}
+.tag {
+  background-color: #1C1C1C;
+  border: 1px solid #C79F5E;
+  color: #C79F5E;
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background-color: #C79F5E;
+  color: #1C1C1C;
+  text-decoration: none;
+}
+
+.pagination {
+  /* Use Flexbox to center the list of page links */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Reset default list styles and add top margin for separation */
+  list-style: none;
+  padding: 0;
+  margin: 2em auto;
+  /* Optional: constrain width on large screens to keep the element tidy */
+  max-width: 400px;
+}
+
+.page-item {
+  /* Gives each button a uniform size and border */
+  border: 1px solid #A9A9A9; /* Subtle light gray border */
+  margin: 0 2px; /* Small space between buttons */
+  border-radius: 3px;
+  /* Ensures the list item doesn't stack in the vertical direction */
+  display: inline-block;
+}
+
+.page-link {
+  /* Makes the entire area clickable and styles the text */
+  display: block;
+  padding: 0.5em 0.8em;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-family: "Montserrat", sans-serif;
+  /* Default link color (muted) */
+  color: #A9A9A9;
+  /* Inverts color for readability and brand aesthetic */
+  background-color: #1C1C1C;
+  transition: all 0.2s ease;
+  /* Inherits border radius */
+  border-radius: 3px;
+}
+
+/* Hover State */
+.page-item:not(.active):not(.disabled) .page-link:hover {
+  color: #C79F5E;
+  background-color: #111111; /* Subtle shade change */
+  border-color: #C79F5E;
+}
+
+/* Active Page (The page the user is currently on) */
+.page-item.active .page-link {
+  color: #1C1C1C; /* Dark text */
+  background-color: #C79F5E; /* Gold background */
+  font-weight: 700;
+  border-color: #C79F5E;
+}
+
+/* Disabled Links (e.g., "Previous" on the first page) */
+.page-item.disabled .page-link {
+  color: #111111; /* Very dark gray, almost invisible */
+  cursor: default;
+}
+
+footer {
+  background-color: #1C1C1C;
+  color: #A9A9A9;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  border-top: 0.1em solid #C79F5E;
+  padding: 1em 0;
+  margin: 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+footer p:last-of-type {
+  margin-top: 1em;
+}
+
+footer a {
+  color: #C79F5E;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #F7F7F7;
+  text-decoration: underline;
+}
+
+footer p img {
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=main.css.map */

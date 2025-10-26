@@ -1,0 +1,72 @@
+{{ define "main" }}
+{{- $page := . -}}  <div class="creation-container">
+    
+    <section class="creation-list">
+        <h2 class="sidebar-heading">Creations</h2>
+        
+        <div class="sidebar-separator"></div> 
+
+        <ul>
+          {{/* Loop up all pages of the 'creations' type for the sidebar list */}}
+          {{ range (where .Site.RegularPages "Type" "in" "creations").ByDate.Reverse }}
+            <li class="{{ if eq .Permalink $.Permalink }}active-sidebar-link{{ end }}">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+          {{ end }}
+        </ul>
+    </section>
+
+    <section class="creation">
+        
+        <h2 class="creation-title">{{ $page.Title }}</h2>
+        
+        <div class="creation-narrative">
+            {{ $page.Content }}
+        </div>
+
+        {{ with $page.Params.image_main }}
+            <figure class="featured-image">
+                <img alt="{{ $page.Params.alt_text | default $page.Title }}" src="{{ . | relURL }}">
+            </figure>
+        {{ end }}
+        
+        <h3 class="technical-heading">Materials & Techniques</h3>
+
+        <div class="specs-grid">
+            
+            <div class="materials-list">
+                <h4>Materials Used</h4>
+                <ul class="clean-list">
+                    {{ range $page.Params.materials }}
+                        <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+            
+            {{ with $page.Params.technique }}
+            <div class="tech-list">
+                <h4>Techniques Employed</h4>
+                <ul class="clean-list">
+                    {{ range . }}
+                        <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </div>
+        
+        {{ with $page.GetTerms "materials" }}
+        <div class="related-links-block">
+            <h4>Discover More by Material</h4>
+            <div class="tag-links">
+                {{ range . }}
+                    <a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+    </section>
+</div>
+
+{{ end }}

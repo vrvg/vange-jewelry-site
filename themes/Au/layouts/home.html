@@ -1,0 +1,13 @@
+{{ define "main" }}
+
+    <section class="home-intro-wrapper">
+        {{/* Renders the "Jewelry & Metal Arts" title and welcome paragraph */}}
+        {{ .Content }}
+    </section>
+
+    <section class="home-links-container">
+        {{/* Call a partial to display links, linking the text you wrote to the actual URLs */}}
+        {{ partial "home-links-grid.html" . }} 
+    </section>
+
+{{ end }}

@@ -1,0 +1,149 @@
+// themes/Au/assets/css/_layout.scss
+
+// Assuming variables are imported globally (e.g., @use 'variables' as vars;)
+@use 'variables' as vars;
+// ---------------------------------------------
+// 1. CONTENT WRAPPER (.container)
+// ---------------------------------------------
+
+.container {
+    // This wrapper constrains the main scrollable content
+    width: 100%;
+    margin: 0 auto;
+    
+    /* Gutters for mobile (when sticky header is off) */
+    padding: 0 16px; 
+    box-sizing: border-box;
+}
+
+// ---------------------------------------------
+// 2. MAIN CONTENT AREA (Spacing and Alignment)
+// ---------------------------------------------
+
+main {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    
+    /* Added generous vertical padding for separation */
+    padding: vars.$spacing-lg vars.$spacing-md; 
+}
+
+// ---------------------------------------------
+// 3. DESKTOP OVERRIDE (768px+ Layout)
+// ---------------------------------------------
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .container {
+        /* Max width for readable content (IA Principle) */
+        max-width: vars.$content-max-width;
+        margin: 0 auto;
+        padding: 0; /* Remove mobile gutters when max-width applies */
+    }
+}
+
+// ---------------------------------------------
+// 4. HOMEPAGE LINK GRID (Exploration Menu)
+// ---------------------------------------------
+
+.home-links-grid {
+    /* Centering the entire section */
+    text-align: center; 
+}
+
+.links-grid {
+    display: grid;
+    
+    /* Mobile Default: Stack items in a single column */
+    grid-template-columns: 1fr;
+    gap: vars.$spacing-md; 
+    margin-top: vars.$spacing-lg; 
+}
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .links-grid {
+        /* Tablet/Desktop: 2 columns */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (min-width: 1024px) {
+    .links-grid {
+        /* Large Desktop: 3 columns */
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+// ---------------------------------------------
+// 5. CREATION SINGLE PAGE (Two-Column Layout)
+// ---------------------------------------------
+
+.creation-container {
+    /* Mobile: Default to stacking the sections */
+    display: block; 
+    padding: vars.$spacing-md 0;
+}
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .creation-container {
+        /* Desktop: Creates the sidebar + main content structure */
+        display: flex;
+        flex-direction: row;
+        gap: vars.$spacing-lg; 
+        
+        /* Ensure layout is contained within the readable width */
+        max-width: 1200px; 
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+/* Sidebar Styles */
+.creation-list {
+    /* Sidebar: Fixed width for visual stability */
+    flex: 0 0 220px; 
+    text-align: left;
+    padding-right: vars.$spacing-md;
+    
+    /* Sidebar Links */
+    & h2 {
+        font-size: 1.2em;
+        text-align: left;
+        margin-top: 0;
+        border-bottom: 1px solid vars.$gold-accent;
+        padding-bottom: 0.5em;
+    }
+    & ul a {
+        display: block;
+        padding: 0.2em 0;
+        font-size: 0.9em;
+        color: vars.$gold-accent; /* Links should pop */
+    }
+    
+    .sidebar-separator {
+        border-bottom: 1px solid rgba(vars.$gold-accent, 0.4);
+        margin: 0.5em 0 vars.$spacing-sm;
+    }
+    
+    .active-sidebar-link a {
+        font-weight: 700;
+        color: vars.$text-light;
+    }
+}
+
+/* Main Content Area Styles */
+.creation {
+    /* Takes up the remaining available space */
+    flex: 1 1 auto;
+}
+
+/* Specs Grid (Materials/Techniques) */
+.specs-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to wrap on small screens */
+    gap: vars.$spacing-md;
+    
+    & div {
+        flex: 1 1 200px; /* Ensures each list can grow/shrink but has a minimum width */
+    }
+}
