@@ -1,6 +1,5 @@
 // themes/Au/assets/css/_layout.scss
 
-// Assuming variables are imported globally (e.g., @use 'variables' as vars;)
 @use 'variables' as vars;
 // ---------------------------------------------
 // 1. CONTENT WRAPPER (.container)
@@ -11,14 +10,12 @@
     width: 100%;
     margin: 0 auto;
     
-    /* Gutters for mobile (when sticky header is off) */
+    /* Gutters for mobile */
     padding: 0 16px;
-    padding-bottom: 16px; 
+    padding-bottom: 16px; /* Keep bottom padding for mobile scroll buffer */
     box-sizing: border-box;
 
-background-color: rgba(28, 28, 28, .95);
-
-backdrop-filter: blur(5px);
+    background-color: rgba(28, 28, 28, .95);
 }
 
 // ---------------------------------------------
@@ -26,12 +23,15 @@ backdrop-filter: blur(5px);
 // ---------------------------------------------
 
 main {
+    flex-grow: 1;
     display: block;
-    margin: 0 auto;
+    //margin: 0 auto;
     text-align: left;
     
     /* Added generous vertical padding for separation */
-    padding: vars.$spacing-lg vars.$spacing-md; 
+    padding: vars.$spacing-lg vars.$spacing-md;
+
+    flex-shrink: 0;
 }
 
 // ---------------------------------------------
@@ -43,7 +43,7 @@ main {
         /* Max width for readable content (IA Principle) */
         max-width: vars.$content-max-width;
         margin: 0 auto;
-        //padding: 0; /* Remove mobile gutters when max-width applies */
+        padding: 0 1em; /* FIX: Remove horizontal and vertical gutters on desktop */
     }
 }
 
@@ -52,30 +52,25 @@ main {
 // ---------------------------------------------
 
 .home-links-grid {
-    /* Centering the entire section */
-    text-align: center; 
+    text-align: center;
 }
 
 .links-grid {
     display: grid;
-    
-    /* Mobile Default: Stack items in a single column */
     grid-template-columns: 1fr;
-    gap: vars.$spacing-md; 
-    margin-top: vars.$spacing-lg; 
+    gap: vars.$spacing-md;
+    margin-top: vars.$spacing-lg;
 }
 
 @media (min-width: vars.$breakpoint-tablet) {
     .links-grid {
-        /* Tablet/Desktop: 2 columns */
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
     .links-grid {
-        /* Large Desktop: 3 columns */
-        grid-template-columns: repeat(3, 1fr); 
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -84,8 +79,7 @@ main {
 // ---------------------------------------------
 
 .creation-container {
-    /* Mobile: Default to stacking the sections */
-    display: block; 
+    display: block;
     padding: vars.$spacing-md 0;
 }
 
@@ -94,10 +88,10 @@ main {
         /* Desktop: Creates the sidebar + main content structure */
         display: flex;
         flex-direction: row;
-        gap: vars.$spacing-lg; 
+        gap: vars.$spacing-lg;
         
         /* Ensure layout is contained within the readable width */
-        max-width: 1200px; 
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0;
     }
@@ -105,12 +99,10 @@ main {
 
 /* Sidebar Styles */
 .creation-list {
-    /* Sidebar: Fixed width for visual stability */
-    flex: 0 0 220px; 
+    flex: 0 0 220px;
     text-align: left;
     padding-right: vars.$spacing-md;
     
-    /* Sidebar Links */
     & h2 {
         font-size: 1.2em;
         text-align: left;
@@ -122,7 +114,7 @@ main {
         display: block;
         padding: 0.2em 0;
         font-size: 0.9em;
-        color: vars.$gold-accent; /* Links should pop */
+        color: vars.$gold-accent;
     }
     
     .sidebar-separator {
@@ -138,17 +130,16 @@ main {
 
 /* Main Content Area Styles */
 .creation {
-    /* Takes up the remaining available space */
     flex: 1 1 auto;
 }
 
 /* Specs Grid (Materials/Techniques) */
 .specs-grid {
     display: flex;
-    flex-wrap: wrap; /* Allows sections to wrap on small screens */
+    flex-wrap: wrap;
     gap: vars.$spacing-md;
     
     & div {
-        flex: 1 1 200px; /* Ensures each list can grow/shrink but has a minimum width */
+        flex: 1 1 200px;
     }
 }

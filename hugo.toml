@@ -13,28 +13,53 @@ theme = 'Au'
 [menus]
   [[menus.main]]
     name = '💎'
-    pageRef = '/creations'
+    pageRef = '/gemstones'
     weight = 10
   [[menus.main]]
     name = '🔬'
-    pageRef = '/projects'
+    pageRef = '/technique/stonesetting'
     weight = 20
   [[menus.main]]
-    name = '📝'
-    pageRef = '/about'
+    name = '🧰'
+    pageRef = '/toolbox'
     weight = 30
   [[menus.main]]
-    name = '📰'
-    pageRef = '/notes'
+    name = '💍'
+    pageRef = '/categories/rings'
     weight = 50
   [[menus.footer]]
-    name = 'terms'
-    pageRef = '/terms'
+    name = '🪑'
+    pageRef = '/categories/chair'
     weight = 10
   [[menus.footer]]
-    name = 'privacy'
-    pageRef = '/privacy'
+    name = '🪆'
+    pageRef = '/categories/dolls'
     weight = 20
+  [[menus.footer]]
+    name = '🪅'
+    pageRef = '/categories/piñata'
+    weight = 20
+  [[menus.footer]]
+    name = '👑'
+    pageRef = '/categories/crown'
+    weight = 20
+  [[menus.footer]]
+    name = '📚🪖👽💀'
+    pageRef = '/about'
+    weight = 50
+  [[menus.footer]]
+    name = '⛓️'
+    pageRef = '/categories/chains'
+    weight = 50
+  [[menus.categories]]
+    name = '👓'
+    pageRef = '/categories/glasses'
+    weight = 50
+  [[menus.categories]]
+    name = '🧐'
+    pageRef = '/techniques/gemology'
+    weight = 50
+
 
 [taxonomies]
   tag = "tags"

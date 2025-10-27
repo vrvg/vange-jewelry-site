@@ -6,6 +6,9 @@ body {
   background-blend-mode: luminosity;
   background-size: 35px 35px;
   background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   border: 0;
   margin: 0;
   padding: 0;
@@ -15,6 +18,7 @@ html {
   font-size: clamp(16px, 1.5vw, 22px);
   font-family: "Montserrat", sans-serif;
   color: #F7F7F7;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -61,20 +65,20 @@ a:visited {
 .container {
   width: 100%;
   margin: 0 auto;
-  /* Gutters for mobile (when sticky header is off) */
+  /* Gutters for mobile */
   padding: 0 16px;
-  padding-bottom: 16px;
+  padding-bottom: 16px; /* Keep bottom padding for mobile scroll buffer */
   box-sizing: border-box;
   background-color: rgba(28, 28, 28, 0.95);
-  backdrop-filter: blur(5px);
 }
 
 main {
+  flex-grow: 1;
   display: block;
-  margin: 0 auto;
   text-align: left;
   /* Added generous vertical padding for separation */
   padding: 2em 1.5em;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
@@ -82,16 +86,15 @@ main {
     /* Max width for readable content (IA Principle) */
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1em; /* FIX: Remove horizontal and vertical gutters on desktop */
   }
 }
 .home-links-grid {
-  /* Centering the entire section */
   text-align: center;
 }
 
 .links-grid {
   display: grid;
-  /* Mobile Default: Stack items in a single column */
   grid-template-columns: 1fr;
   gap: 1.5em;
   margin-top: 2em;
@@ -99,18 +102,15 @@ main {
 
 @media (min-width: 768px) {
   .links-grid {
-    /* Tablet/Desktop: 2 columns */
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 1024px) {
   .links-grid {
-    /* Large Desktop: 3 columns */
     grid-template-columns: repeat(3, 1fr);
   }
 }
 .creation-container {
-  /* Mobile: Default to stacking the sections */
   display: block;
   padding: 1.5em 0;
 }
@@ -129,11 +129,9 @@ main {
 }
 /* Sidebar Styles */
 .creation-list {
-  /* Sidebar: Fixed width for visual stability */
   flex: 0 0 220px;
   text-align: left;
   padding-right: 1.5em;
-  /* Sidebar Links */
 }
 .creation-list h2 {
   font-size: 1.2em;
@@ -146,7 +144,7 @@ main {
   display: block;
   padding: 0.2em 0;
   font-size: 0.9em;
-  color: #C79F5E; /* Links should pop */
+  color: #C79F5E;
 }
 .creation-list .sidebar-separator {
   border-bottom: 1px solid rgba(199, 159, 94, 0.4);
@@ -159,51 +157,34 @@ main {
 
 /* Main Content Area Styles */
 .creation {
-  /* Takes up the remaining available space */
   flex: 1 1 auto;
 }
 
 /* Specs Grid (Materials/Techniques) */
 .specs-grid {
   display: flex;
-  flex-wrap: wrap; /* Allows sections to wrap on small screens */
+  flex-wrap: wrap;
   gap: 1.5em;
 }
 .specs-grid div {
-  flex: 1 1 200px; /* Ensures each list can grow/shrink but has a minimum width */
+  flex: 1 1 200px;
 }
 
 header {
   /* Background Color: Use RGBA for transparency */
   background-color: rgba(28, 28, 28, 0.85);
-  /* Optional: "Frosted glass" effect */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  margin: 0;
   border-bottom: 0.1em solid #C79F5E;
+  margin: 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Desktop default padding (Horizontal padding will be applied by media query) */
-  padding: 0.25em 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-@media (min-width: 768px) {
-  header {
-    /* CRITICAL FIX: Make the header the main Flex container on desktop */
-    flex-direction: row;
-    justify-content: space-between; /* Pushes Logo/Title left, Nav right */
-    /* Ensure horizontal padding is applied on the sides of the sticky bar */
-    padding: 0.25em 1.5em;
-  }
-}
-@media (max-width: 768px) {
-  header {
-    /* Mobile Vertical Stack Padding */
-    padding: 0.5em 0;
-  }
+  /* Ensure padding is used for horizontal separation on all screens */
+  padding: 0.25em 1.5em;
+  /* FIX 2: Allows the strip to scroll horizontally if content overflows mobile screen */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .header-inner {
@@ -211,107 +192,91 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  /* CRITICAL FIX: REMOVE DISPLAY FLEX. The <header> is the Flex container. */
-  /* This wrapper now only sets up width constraints. */
-  /* Horizontal padding applied here to ensure space inside the constrained block */
-  padding: 0 1.5em;
-}
-@media (max-width: 768px) {
-  .header-inner {
-    /* On mobile, allow inner elements to stack normally */
-    display: block;
-    padding: 0 1.5em;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* We don't need flex properties here anymore, as the outer header does the work. */
+  padding: 0;
 }
 
 .logo-and-title {
-  /* This grouping is a sub-Flex container */
   display: flex;
   align-items: center;
   flex: 0 1 auto;
   gap: 1em;
 }
-@media (max-width: 768px) {
-  .logo-and-title {
-    /* Stack logo and title vertically on small screens */
-    flex-direction: column;
-    gap: 0.5em;
-    padding-bottom: 0.5em;
-  }
-}
 
 header img {
-  /* Consolidated and robust sizing for the image */
-  width: 15vw;
-  height: auto;
+  /* Ensure sizing is compact */
   max-height: 1.5em;
-  max-width: 250px;
+  width: auto;
   min-width: 80px;
-  display: inline-block;
-  margin: 0;
 }
 
 .site-title {
-  color: #C79F5E;
+  /* Ensure title is compact */
   font-family: "IBM Plex Mono", monospace;
   font-size: 1em;
-  letter-spacing: 0.08em;
   white-space: nowrap;
   margin: 0;
-  padding: 0;
-  flex: none;
-  text-align: center;
 }
 
 .main-nav {
   color: #F7F7F7;
   font-family: "Montserrat", sans-serif;
+  /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
+  flex: 1 1 auto;
+  width: auto;
+  margin: 0 auto;
+  /* Ensure the background color is uniform */
 }
 @media (max-width: 768px) {
   .main-nav {
-    /* Stack logo and title vertically on small screens */
-    flex-direction: column;
-    gap: 0.5em;
-    padding-bottom: 0.5em;
+    text-align: center;
+    margin-top: 0.5em;
+    flex: 1 1 100%;
   }
 }
 
-.main-nav > nav > ul {
+.main-nav > ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  /* Horizontal layout on ALL devices for the thin strip look */
+  /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
   flex-direction: row;
-  justify-content: flex-end; /* Pushes links to the far right */
-  gap: 1.5em;
+  /* Aligns links to the right edge of the strip */
+  justify-content: flex-end;
+  gap: 0.5em; /* Spacing between links */
 }
 @media (max-width: 768px) {
-  .main-nav > nav > ul {
-    /* Center the group of links on small screens */
+  .main-nav > ul {
+    /* On mobile, center the link group within the available space */
     justify-content: center;
   }
 }
 
-.main-nav > nav > ul > li {
+nav > ul > li {
+  /* Ensures links only take the space they need (prevents vertical stretching) */
   flex: none;
   text-align: center;
-  padding: 0 0.5em;
+  padding: 0 0.5em; /* Minimal horizontal padding */
 }
 
-.main-nav > nav > ul > li > a {
+nav > ul > li > a {
   color: #F7F7F7;
   text-decoration: none;
+  /* Base font size for the compact strip */
   font-size: 1em;
 }
 @media (max-width: 768px) {
-  .main-nav > nav > ul > li > a {
+  nav > ul > li > a {
     /* Slightly larger font size for easier tapping on mobile */
     font-size: 1.2em;
   }
 }
-.main-nav > nav > ul > li > a:hover {
+nav > ul > li > a:hover {
   color: #C79F5E;
 }
 
@@ -394,20 +359,27 @@ header img {
 }
 
 footer {
-  background-color: #1C1C1C;
+  background-color: rgba(28, 28, 28, 0.85);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   color: #A9A9A9;
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
   border-top: 0.1em solid #C79F5E;
+  position: sticky;
+  bottom: 0;
+  z-index: 1000;
   padding: 1em 0;
   margin: 0;
+  margin-top: auto;
   text-align: center;
 }
 
-footer p {
-  margin: 0;
+footer > p {
+  margin: 0 auto;
   padding: 0;
   line-height: 1.5;
+  text-align: center;
 }
 
 footer p:last-of-type {
@@ -425,6 +397,43 @@ footer a:hover {
 
 footer p img {
   vertical-align: middle;
+}
+
+.footer-nav {
+  color: #F7F7F7;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
+  flex: 1 1 auto;
+  width: auto;
+  margin: 0 auto;
+  /* Ensure the background color is uniform */
+}
+@media (max-width: 768px) {
+  .footer-nav {
+    text-align: center;
+    margin-top: 0.5em;
+    flex: 1 1 100%;
+  }
+}
+
+.footer-nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
+  flex-direction: row;
+  /* Aligns links to the right edge of the strip */
+  justify-content: center;
+  gap: 1.5em; /* Spacing between links */
+}
+@media (max-width: 768px) {
+  .footer-nav > ul {
+    /* On mobile, center the link group within the available space */
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

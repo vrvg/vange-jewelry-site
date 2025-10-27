@@ -7,49 +7,62 @@
 // ---------------------------------------------
 
 .main-nav {
-    //background-color: vars.$charcoal-dark; 
     color: vars.$text-light;
     font-family: vars.$font-sans;
     
-    @media (max-width: vars.$breakpoint-tablet) {
-        /* Stack logo and title vertically on small screens */
-        flex-direction: column; 
-        gap: 0.5em;
-        padding-bottom: 0.5em; 
+    /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
+    flex: 1 1 auto;
+    width: auto;
+    margin: 0 auto;
+    
+    /* Ensure the background color is uniform */
+    @media (max-width: vars.$breakpoint-tablet) { 
+        text-align: center;
+        margin-top: 0.5em; 
+        flex: 1 1 100%;
     }
-
 }
 
 // ---------------------------------------------
-// LIST OF LINKS (ul)
+// LIST OF LINKS (ul) - ALWAYS HORIZONTAL STRIP
 // ---------------------------------------------
 
-.main-nav > nav > ul {
+.main-nav > ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     
-    /* Horizontal layout on ALL devices for the thin strip look */
+    /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
     flex-direction: row; 
-    justify-content: flex-end; /* Pushes links to the far right */
-    gap: 1.5em; 
+    
+    /* Aligns links to the right edge of the strip */
+    justify-content: flex-end; 
+    
+    gap: 0.5em; /* Spacing between links */
     
     @media (max-width: vars.$breakpoint-tablet) {
-        /* Center the group of links on small screens */
+        /* On mobile, center the link group within the available space */
         justify-content: center; 
     }
 }
 
-.main-nav > nav > ul > li {
+// ---------------------------------------------
+// LIST ITEMS (li) and ANCHOR LINKS (a)
+// ---------------------------------------------
+
+nav > ul > li {
+    /* Ensures links only take the space they need (prevents vertical stretching) */
     flex: none; 
     text-align: center;
-    padding: 0 0.5em; 
+    padding: 0 0.5em; /* Minimal horizontal padding */
 }
 
-.main-nav > nav > ul > li > a {
+nav > ul > li > a {
     color: vars.$text-light;
     text-decoration: none;
+    
+    /* Base font size for the compact strip */
     font-size: 1em; 
     
     @media (max-width: vars.$breakpoint-tablet) {
