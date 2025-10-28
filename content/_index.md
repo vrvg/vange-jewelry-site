@@ -5,6 +5,18 @@ keywords: ["handcrafted jewelry", "metal arts portfolio", "metalsmithing", "art 
 draft: false
 ---
 
-# Jewelry & Metal Arts
+# vJewelry
+
+a multifaceted approach to jewelry.
+
+# Jewelry
 
 Welcome to the online portfolio of **Vangelis R. Velázquez González**, a showcase for my unique handcrafted jewelry and metal arts. I invite you to explore the intersections of form and material, where traditional metalsmithing meets contemporary design philosophy.
+
+# Metal Arts
+
+# Metalsmithing
+
+# Gemology
+
+# Jewelry Design

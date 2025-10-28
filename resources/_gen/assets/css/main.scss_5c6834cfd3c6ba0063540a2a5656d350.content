@@ -92,6 +92,10 @@ main {
     padding: 0 1em; /* FIX: Remove horizontal and vertical gutters on desktop */
   }
 }
+.home-links-container {
+  border-top: 0.1em solid #C79F5E;
+}
+
 .home-links-grid {
   text-align: center;
 }

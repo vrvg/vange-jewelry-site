@@ -1,6 +1,6 @@
 baseURL = 'https://www.vange.jewelry/'
 languageCode = 'en-us'
-title = 'vJewelry'
+title = 'vange'
 
 theme = 'Au'
 
@@ -28,7 +28,7 @@ theme = 'Au'
     pageRef = '/gemstones'
     weight = 10
   [[menus.footer]]
-    name = 'Materials'
+    name = 'M'
     pageRef = '/materials'
     weight = 30
   [[menus.footer]]

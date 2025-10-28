@@ -59,6 +59,10 @@ main {
 // 4. HOMEPAGE LINK GRID (Exploration Menu)
 // ---------------------------------------------
 
+.home-links-container {
+    border-top: 0.1em solid vars.$gold-accent;
+}
+
 .home-links-grid {
     text-align: center;
 }
