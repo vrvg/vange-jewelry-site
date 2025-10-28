@@ -16,6 +16,8 @@
     box-sizing: border-box;
 
     background-color: rgba(28, 28, 28, .95);
+    border-right: 0.1em solid vars.$gold-accent;
+    border-left: 0.1em solid vars.$gold-accent;
 }
 
 // ---------------------------------------------
@@ -27,7 +29,13 @@ main {
     display: block;
     //margin: 0 auto;
     text-align: left;
+
+    //border-right: 0.1em solid vars.$gold-accent;
     
+    background-color: rgba(28, 28, 28, 0.35); 
+    //backdrop-filter: blur(1px);
+    //-webkit-backdrop-filter: blur(5px);
+
     /* Added generous vertical padding for separation */
     padding: vars.$spacing-lg vars.$spacing-md;
 

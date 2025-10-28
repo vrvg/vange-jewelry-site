@@ -70,12 +70,15 @@ a:visited {
   padding-bottom: 16px; /* Keep bottom padding for mobile scroll buffer */
   box-sizing: border-box;
   background-color: rgba(28, 28, 28, 0.95);
+  border-right: 0.1em solid #C79F5E;
+  border-left: 0.1em solid #C79F5E;
 }
 
 main {
   flex-grow: 1;
   display: block;
   text-align: left;
+  background-color: rgba(28, 28, 28, 0.35);
   /* Added generous vertical padding for separation */
   padding: 2em 1.5em;
   flex-shrink: 0;
@@ -378,8 +381,10 @@ footer {
 footer > p {
   margin: 0 auto;
   padding: 0;
+  padding-top: 1em;
   line-height: 1.5;
   text-align: center;
+  border-top: 0.1em solid #C79F5E;
 }
 
 footer p:last-of-type {
@@ -402,6 +407,7 @@ footer p img {
 .footer-nav {
   color: #F7F7F7;
   font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
   display: flex;
   flex-direction: column;
   /* Allows the NAV to take up the remaining space (used by parent <header> flex) */

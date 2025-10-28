@@ -13,59 +13,40 @@ theme = 'Au'
 [menus]
   [[menus.main]]
     name = '💎'
-    pageRef = '/gemstones'
+    pageRef = '/creations'
     weight = 10
   [[menus.main]]
-    name = '🔬'
-    pageRef = '/technique/stonesetting'
-    weight = 20
-  [[menus.main]]
-    name = '🧰'
-    pageRef = '/toolbox'
+    name = '👑'
+    pageRef = '/about'
     weight = 30
   [[menus.main]]
     name = '💍'
-    pageRef = '/categories/rings'
+    pageRef = '/notes'
     weight = 50
   [[menus.footer]]
-    name = '🪑'
-    pageRef = '/categories/chair'
+    name = 'Gemstones'
+    pageRef = '/gemstones'
     weight = 10
   [[menus.footer]]
-    name = '🪆'
-    pageRef = '/categories/dolls'
-    weight = 20
+    name = 'Materials'
+    pageRef = '/materials'
+    weight = 30
   [[menus.footer]]
-    name = '🪅'
-    pageRef = '/categories/piñata'
-    weight = 20
-  [[menus.footer]]
-    name = '👑'
-    pageRef = '/categories/crown'
-    weight = 20
-  [[menus.footer]]
-    name = '📚🪖👽💀'
-    pageRef = '/about'
+    name = 'Collections'
+    pageRef = '/collections'
     weight = 50
   [[menus.footer]]
-    name = '⛓️'
-    pageRef = '/categories/chains'
-    weight = 50
-  [[menus.categories]]
-    name = '👓'
-    pageRef = '/categories/glasses'
-    weight = 50
-  [[menus.categories]]
-    name = '🧐'
-    pageRef = '/techniques/gemology'
-    weight = 50
-
+    name = 'Techniques'
+    pageRef = '/techniques'
+    weight = 70
 
 [taxonomies]
   tag = "tags"
   category = "categories"
   technique = "techniques"
   material = "materials"
+  gemstone = "gemstones"
+  collection = "collections"
   year = "year"
   month = "month"
 
