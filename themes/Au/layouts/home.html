@@ -7,6 +7,16 @@
 
     <section class="home-links-container">
         {{/* Call a partial to display links, linking the text you wrote to the actual URLs */}}
+        {{ partial "home-links-grid-categories.html" . }} 
+    </section>
+
+    <section class="home-links-container">
+        {{/* Call a partial to display links, linking the text you wrote to the actual URLs */}}
+        {{ partial "home-links-grid-collaborations.html" . }} 
+    </section>
+
+    <section class="home-links-container">
+        {{/* Call a partial to display links, linking the text you wrote to the actual URLs */}}
         {{ partial "home-links-grid.html" . }} 
     </section>
 

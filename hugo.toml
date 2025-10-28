@@ -40,7 +40,7 @@ theme = 'Au'
     pageRef = '/collections'
     weight = 50
   [[menus.footer]]
-    name = 'Techniques'
+    name = '🧰'
     pageRef = '/techniques'
     weight = 70
 
