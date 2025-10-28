@@ -4,7 +4,9 @@ draft = false
 title = 'Tutu Nana Sunset Patch'
 creation_id = 'No. 0000'
 materials = ['Sterling Silver', '14K Gold', 'Sapphire']
-technique = ['Fabrication', 'Bezel Setting']
+techniques = ['Fabrication', 'Bezel Setting']
+collections = ['수현', 'Metal Patches', '수현수현']
+gemstones = ['none', 'diamond']
 dimensions = '30mm x 25mm (pendant)'
 weight_grams = '25g'
 status = 'Available'
@@ -12,6 +14,7 @@ price = 0.00
 summary = 'A brief, elegant description for the gallery listing.'
 image_main = 'images/tutu-nana-sunset-patch-worn.jpg'
 alt_text = 'Tutu Nana Sunset Patch - Main photo'
+tags = ''
 +++
 
 ### Design Philosophy

@@ -65,11 +65,12 @@ a:visited {
 .container {
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 8em;
   /* Gutters for mobile */
   padding: 0 16px;
   padding-bottom: 16px; /* Keep bottom padding for mobile scroll buffer */
   box-sizing: border-box;
-  background-color: rgba(28, 28, 28, 0.95);
+  background-color: #1C1C1C;
   border-right: 0.1em solid #C79F5E;
   border-left: 0.1em solid #C79F5E;
 }
@@ -89,6 +90,7 @@ main {
     /* Max width for readable content (IA Principle) */
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 8em;
     padding: 0 1em; /* FIX: Remove horizontal and vertical gutters on desktop */
   }
 }
@@ -178,71 +180,83 @@ main {
 }
 
 header {
-  /* Background Color: Use RGBA for transparency */
+  /* Background and Effects */
   background-color: rgba(28, 28, 28, 0.85);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border-bottom: 0.1em solid #C79F5E;
+  /* Aesthetics and Positioning */
   margin: 0;
+  border-bottom: 0.1em solid #C79F5E;
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Ensure padding is used for horizontal separation on all screens */
-  padding: 0.25em 1.5em;
-  /* FIX 2: Allows the strip to scroll horizontally if content overflows mobile screen */
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.header-inner {
-  /* Constrains content to max-width and centers it horizontally */
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  /* Horizontal/Vertical Alignment for the Sticky Strip (Default) */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  /* We don't need flex properties here anymore, as the outer header does the work. */
-  padding: 0;
+  /* Padding and Scrolling */
+  padding: 0.25em 1.5em; /* Small vertical, generous horizontal padding */
+  overflow-x: auto; /* Allows horizontal scrolling on small screens */
+  overflow-y: hidden;
+}
+@media (max-width: 768px) {
+  header {
+    /* Mobile: Allow elements to stack vertically if space is too tight */
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em 1.5em; /* More vertical padding for tapping */
+  }
 }
 
 .logo-and-title {
   display: flex;
   align-items: center;
-  flex: 0 1 auto;
+  flex: 0 1 auto; /* Ensures group only takes space needed (prevents stretching) */
   gap: 1em;
+}
+@media (max-width: 768px) {
+  .logo-and-title {
+    /* Stack logo and title vertically on small screens */
+    flex-direction: column;
+    gap: 0.5em;
+    padding-bottom: 0.5em;
+  }
 }
 
 header img {
-  /* Ensure sizing is compact */
+  /* Ensures logo height matches text for the thin strip */
   max-height: 1.5em;
   width: auto;
   min-width: 80px;
-}
-
-.site-title {
-  /* Ensure title is compact */
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 1em;
-  white-space: nowrap;
+  display: inline-block;
   margin: 0;
 }
 
+.site-title {
+  color: #C79F5E;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  flex: none;
+  text-align: center;
+}
+
 .main-nav {
-  color: #F7F7F7;
-  font-family: "Montserrat", sans-serif;
-  /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
+  /* REMOVED: color & font-family as they inherit from the <html> element */
+  /* Allows the NAV to take up the remaining space (Flex Item for <header>) */
   flex: 1 1 auto;
   width: auto;
   margin: 0 auto;
-  /* Ensure the background color is uniform */
 }
 @media (max-width: 768px) {
   .main-nav {
     text-align: center;
     margin-top: 0.5em;
-    flex: 1 1 100%;
+    /* REMOVED: flex: 1 1 100%; as it conflicts with horizontal flow */
   }
 }
 
@@ -251,7 +265,7 @@ header img {
   padding: 0;
   margin: 0;
   display: flex;
-  /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
+  /* Horizontal layout on ALL devices for the thin strip look */
   flex-direction: row;
   /* Aligns links to the right edge of the strip */
   justify-content: flex-end;
@@ -265,15 +279,14 @@ header img {
 }
 
 nav > ul > li {
-  /* Ensures links only take the space they need (prevents vertical stretching) */
+  /* Ensures links only take the space they need */
   flex: none;
   text-align: center;
   padding: 0 0.5em; /* Minimal horizontal padding */
 }
 
 nav > ul > li > a {
-  color: #F7F7F7;
-  text-decoration: none;
+  /* REMOVED: color & text-decoration as they are covered by global <a> */
   /* Base font size for the compact strip */
   font-size: 1em;
 }
@@ -366,33 +379,67 @@ nav > ul > li > a:hover {
 }
 
 footer {
-  background-color: rgba(28, 28, 28, 0.85);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  /* SCSS for Sticky Footer (Ensures it stays at the bottom when content is short) */
+  margin-top: auto;
+  /* BACKGROUND & BORDER */
+  background-color: #1C1C1C;
+  border-top: 0.1em solid #C79F5E;
+  /* TYPOGRAPHY */
   color: #A9A9A9;
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
-  border-top: 0.1em solid #C79F5E;
-  position: sticky;
+  text-align: center;
+  /* SPACING & POSITIONING */
+  padding: 1em 1.5em;
+  margin: 0;
+  position: fixed;
   bottom: 0;
   z-index: 1000;
-  padding: 1em 0;
-  margin: 0;
-  margin-top: auto;
-  text-align: center;
+  width: 100%;
+  opacity: 85%;
+  /* REMOVED: position: sticky; bottom: 0; z-index: 1000; (These conflict with main sticky header) */
+  /* REMOVED: background-color: rgba(28, 28, 28, 0.85); (Use solid color for better contrast) */
+  /* REMOVED: backdrop-filter/webkit-backdrop-filter (Not necessary on a solid background) */
 }
 
+.footer-nav {
+  /* Primary Flex Container for links (Remove redundant color/font inheritance) */
+  display: flex;
+  justify-content: center; /* Center the entire nav group */
+  /* Vertical Spacing */
+  margin: 1em auto;
+  /* Ensure no vertical growth (Not needed as a Flex Item of <body>) */
+  /* REMOVED: flex: 1 1 auto; and width/margin auto on mobile */
+}
+
+.footer-nav > ul {
+  /* Link List (Primary Flex Container for LI) */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row; /* Horizontal flow is correct */
+  justify-content: center;
+  gap: 1em; /* Reduced gap for compact footer links */
+}
+
+.footer-nav > ul > li {
+  flex: none;
+  text-align: center;
+  padding: 0;
+}
+
+/* ---------------------------------------------
+ * 3. COPYRIGHT TEXT & IMAGE
+ * --------------------------------------------- */
 footer > p {
+  /* Targets the copyright text */
   margin: 0 auto;
   padding: 0;
-  padding-top: 1em;
   line-height: 1.5;
   text-align: center;
+  padding-top: 1em;
   border-top: 0.1em solid #C79F5E;
-}
-
-footer p:last-of-type {
-  margin-top: 1em;
 }
 
 footer a {
@@ -406,44 +453,6 @@ footer a:hover {
 
 footer p img {
   vertical-align: middle;
-}
-
-.footer-nav {
-  color: #F7F7F7;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-  /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
-  flex: 1 1 auto;
-  width: auto;
-  margin: 0 auto;
-  /* Ensure the background color is uniform */
-}
-@media (max-width: 768px) {
-  .footer-nav {
-    text-align: center;
-    margin-top: 0.5em;
-    flex: 1 1 100%;
-  }
-}
-
-.footer-nav > ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
-  flex-direction: row;
-  /* Aligns links to the right edge of the strip */
-  justify-content: center;
-  gap: 1.5em; /* Spacing between links */
-}
-@media (max-width: 768px) {
-  .footer-nav > ul {
-    /* On mobile, center the link group within the available space */
-    justify-content: center;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

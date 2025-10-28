@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+    <section class="list-intro-content">
+        <h2 class="list-heading">Professional Collaborations & Case Studies</h2>
+        
+        {{/* You can add introductory content to content/collaborations/_index.md */}}
+        {{ .Content }}
+    </section>
+
+    <section class="creations-grid">
+        
+        {{/* Loop through all collaboration pages, displaying them as cards */}}
+        {{ range .Pages }}
+            
+            {{- $collab := . -}}
+            
+            <article class="collaboration-summary-card link-item">
+                
+                <div class="card-body">
+                    <h3 class="card-title">
+                        {{/* The title is the project name/client */}}
+                        <a href="{{ $collab.RelPermalink }}">{{ $collab.Title }}</a>
+                    </h3>
+                    
+                    {{ with $collab.Params.partner_name }}
+                        <p class="partner-name">Partner: <strong>{{ . }}</strong></p>
+                    {{ end }}
+                    
+                    <p class="card-summary">{{ $collab.Summary }}</p>
+
+                    <a href="{{ $collab.RelPermalink }}" class="btn-secondary">View Case Study</a>
+                </div>
+                
+            </article>
+            
+        {{ end }}
+    </section>
+
+{{ end }}

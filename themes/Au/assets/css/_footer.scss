@@ -2,38 +2,82 @@
 
 @use 'variables' as vars;
 
+// ---------------------------------------------
+// 1. FOOTER CONTAINER (Structural & Aesthetic)
+// ---------------------------------------------
 footer {
-    background-color: rgba(28, 28, 28, 0.85); 
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    /* SCSS for Sticky Footer (Ensures it stays at the bottom when content is short) */
+    margin-top: auto; 
+    
+    /* BACKGROUND & BORDER */
+    background-color: vars.$charcoal-dark; // Use solid dark color, inherit opacity from base
+    border-top: 0.1em solid vars.$gold-accent;
+    
+    /* TYPOGRAPHY */
     color: vars.$text-muted;
     font-family: vars.$font-sans;
-    font-size: 0.8em;
+    font-size: 0.8em; // Smaller for secondary content
+    text-align: center;
     
-    border-top: 0.1em solid vars.$gold-accent;
-
-    position: sticky; 
+    /* SPACING & POSITIONING */
+    padding: vars.$spacing-sm 1.5em; // Add horizontal padding for consistency
+    margin: 0;
+    position: fixed;
     bottom: 0;
     z-index: 1000;
-    
-    padding: vars.$spacing-sm 0; 
-    margin: 0;
-    margin-top: auto;
-    text-align: center;
+    width: 100%;
+    opacity: 85%;
+    /* REMOVED: position: sticky; bottom: 0; z-index: 1000; (These conflict with main sticky header) */
+    /* REMOVED: background-color: rgba(28, 28, 28, 0.85); (Use solid color for better contrast) */
+    /* REMOVED: backdrop-filter/webkit-backdrop-filter (Not necessary on a solid background) */
 }
+
+// ---------------------------------------------
+// 2. FOOTER NAVIGATION (.footer-nav)
+// ---------------------------------------------
+
+.footer-nav {
+    /* Primary Flex Container for links (Remove redundant color/font inheritance) */
+    display: flex;
+    justify-content: center; /* Center the entire nav group */
+    
+    /* Vertical Spacing */
+    margin: vars.$spacing-sm auto;
+    
+    /* Ensure no vertical growth (Not needed as a Flex Item of <body>) */
+    /* REMOVED: flex: 1 1 auto; and width/margin auto on mobile */
+}
+
+.footer-nav > ul {
+    /* Link List (Primary Flex Container for LI) */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row; /* Horizontal flow is correct */
+    justify-content: center;
+    gap: 1em; /* Reduced gap for compact footer links */
+}
+
+.footer-nav > ul > li {
+    flex: none;
+    text-align: center;
+    padding: 0;
+}
+
+/* ---------------------------------------------
+ * 3. COPYRIGHT TEXT & IMAGE
+ * --------------------------------------------- */
 
 footer > p {
+    /* Targets the copyright text */
     margin: 0 auto; 
-    padding: 0;
-    padding-top: 1em;
+    padding: 0; 
     line-height: 1.5;
     text-align: center;
-
+    padding-top: 1em;
+    
     border-top: 0.1em solid vars.$gold-accent;
-}
-
-footer p:last-of-type {
-    margin-top: vars.$spacing-sm; 
 }
 
 footer a {
@@ -48,49 +92,4 @@ footer a {
 
 footer p img {
     vertical-align: middle;
-}
-
-.footer-nav {
-    color: vars.$text-light;
-    font-family: vars.$font-sans;
-    text-transform: uppercase;
-
-    display: flex;
-    flex-direction: column;
-    
-    /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
-    flex: 1 1 auto;
-    width: auto;
-    margin: 0 auto;
-    
-    /* Ensure the background color is uniform */
-    @media (max-width: vars.$breakpoint-tablet) { 
-        text-align: center;
-        margin-top: 0.5em; 
-        flex: 1 1 100%;
-    }
-}
-
-// ---------------------------------------------
-// LIST OF LINKS (ul) - ALWAYS HORIZONTAL STRIP
-// ---------------------------------------------
-
-.footer-nav > ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    
-    /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
-    flex-direction: row; 
-    
-    /* Aligns links to the right edge of the strip */
-    justify-content: center; 
-    
-    gap: 1.5em; /* Spacing between links */
-    
-    @media (max-width: vars.$breakpoint-tablet) {
-        /* On mobile, center the link group within the available space */
-        justify-content: center; 
-    }
 }

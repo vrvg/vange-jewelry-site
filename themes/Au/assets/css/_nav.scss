@@ -7,19 +7,17 @@
 // ---------------------------------------------
 
 .main-nav {
-    color: vars.$text-light;
-    font-family: vars.$font-sans;
+    /* REMOVED: color & font-family as they inherit from the <html> element */
     
-    /* Allows the NAV to take up the remaining space (used by parent <header> flex) */
-    flex: 1 1 auto;
+    /* Allows the NAV to take up the remaining space (Flex Item for <header>) */
+    flex: 1 1 auto; 
     width: auto;
     margin: 0 auto;
-    
-    /* Ensure the background color is uniform */
-    @media (max-width: vars.$breakpoint-tablet) { 
+
+    @media (max-width: vars.$breakpoint-tablet) {
         text-align: center;
         margin-top: 0.5em; 
-        flex: 1 1 100%;
+        /* REMOVED: flex: 1 1 100%; as it conflicts with horizontal flow */
     }
 }
 
@@ -33,7 +31,7 @@
     margin: 0;
     display: flex;
     
-    /* KEY FIX: Horizontal layout on ALL devices for the thin strip look */
+    /* Horizontal layout on ALL devices for the thin strip look */
     flex-direction: row; 
     
     /* Aligns links to the right edge of the strip */
@@ -52,15 +50,14 @@
 // ---------------------------------------------
 
 nav > ul > li {
-    /* Ensures links only take the space they need (prevents vertical stretching) */
+    /* Ensures links only take the space they need */
     flex: none; 
     text-align: center;
     padding: 0 0.5em; /* Minimal horizontal padding */
 }
 
 nav > ul > li > a {
-    color: vars.$text-light;
-    text-decoration: none;
+    /* REMOVED: color & text-decoration as they are covered by global <a> */
     
     /* Base font size for the compact strip */
     font-size: 1em; 

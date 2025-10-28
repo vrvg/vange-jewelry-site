@@ -1,16 +1,4 @@
-<div class="header-inner">
-
-    <div class="logo-and-title">
-        <figure class="site-logo">
-            <a href="/">
-                <img src="{{ "vange-jewelry-stroke-version.svg" | relURL }}" alt="Vange Jewelry Logo">
-            </a>
-        </figure>
-        <h1 class="site-title">{{ .Site.Title }}</h1>
-    </div>
-
-    <nav class="main-nav">
-        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-    </div>
-
-</div>
+<h1 class="site-title">{{ .Site.Title }}</h1>
+<nav class="main-nav">
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</nav>
