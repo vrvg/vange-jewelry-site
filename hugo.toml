@@ -1,6 +1,6 @@
 baseURL = 'https://www.vange.jewelry/'
 languageCode = 'en-us'
-title = 'vangeJewelry'
+title = 'vJewelry'
 
 theme = 'Au'
 
@@ -36,7 +36,7 @@ theme = 'Au'
     pageRef = '/collections'
     weight = 50
   [[menus.footer]]
-    name = 'Techniques'
+    name = 'T'
     pageRef = '/techniques'
     weight = 70
 
