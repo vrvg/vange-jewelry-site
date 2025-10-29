@@ -3,18 +3,20 @@
 // Assuming variables are imported globally
 // $charcoal-dark, $gold-accent, $text-light, $spacing-xs, etc.
 
+@use 'variables' as vars;
+
 // ---------------------------------------------
 // TAGS (Used for materials, techniques, etc.)
 // ---------------------------------------------
 
 .tag {
-    background-color: $charcoal-dark; 
-    border: 1px solid $gold-accent; 
-    color: $gold-accent; 
+    background-color: vars.$charcoal-dark; 
+    border: 1px solid vars.$gold-accent; 
+    color: vars.$gold-accent; 
     
     // Layout and Spacing
     display: inline-block;
-    padding: $spacing-xs $spacing-sm; // Uses variables for consistency
+    padding: vars.$spacing-xs vars.$spacing-sm; // Uses variables for consistency
     font-size: 0.9em;
     text-decoration: none;
     border-radius: 3px; 
@@ -22,8 +24,8 @@
 }
 
 .tag:hover {
-    background-color: $gold-accent; 
-    color: $charcoal-dark; // Inverts colors for high-contrast feedback
+    background-color: vars.$gold-accent; 
+    color: vars.$charcoal-dark; // Inverts colors for high-contrast feedback
     text-decoration: none; 
     cursor: pointer;
 }
@@ -46,16 +48,32 @@ figure img {
     height: auto;
     
     // Optional: Add a subtle gold border to frame the artwork
-    border: 1px solid rgba($gold-accent, 0.5); 
+    border: 1px solid rgba(vars.$gold-accent, 0.5); 
 }
 
 figcaption {
-    font-family: $font-sans;
+    font-family: vars.$font-sans;
     font-size: 0.8em;
-    color: $text-muted; // Muted color for secondary information
+    color: vars.$text-muted; // Muted color for secondary information
     margin-top: 0.5em;
 }
 
+
+.featured-image {
+    margin: 2em auto; // Ample vertical margin for luxury spacing
+    padding: 0;
+    max-width: 100%;
+    text-align: center;
+}
+
+.featured-image > img {
+    // Ensures images fit within the constrained main content area
+    max-width: 100%;
+    height: auto;
+    
+    // Optional: Add a subtle gold border to frame the artwork
+    border: 1px solid rgba(vars.$gold-accent, 0.5); 
+}
 
 // ---------------------------------------------
 // BUTTONS / CALLS-TO-ACTION (CTAs)
@@ -64,10 +82,10 @@ figcaption {
 .btn-primary {
     display: inline-block;
     padding: 0.8em 1.5em;
-    margin-top: $spacing-sm;
+    margin-top: vars.$spacing-sm;
     
-    background-color: $gold-accent;
-    color: $charcoal-dark;
+    background-color: vars.$gold-accent;
+    color: vars.$charcoal-dark;
     
     border: none;
     border-radius: 4px;
@@ -77,8 +95,8 @@ figcaption {
     transition: background-color 0.3s;
     
     &:hover {
-        background-color: darken($gold-accent, 10%); // Darker gold on hover
-        color: $charcoal-dark;
+        background-color: darken(vars.$gold-accent, 10%); // Darker gold on hover
+        color: vars.$charcoal-dark;
     }
 }
 
@@ -258,16 +276,21 @@ figcaption {
 
 // In _components.scss
 
-img {
+//img {
     /* Ensures the image never exceeds the width of its parent container */
-    max-width: 100%; 
+//    max-width: 100%; 
     /* Maintains aspect ratio when scaling */
-    height: auto;   
+//    height: auto;   
     /* Vertical alignment for images that might be inline content (e.g., logos) */
-    vertical-align: middle; 
-}
+//    vertical-align: middle; 
+//}
 
 
 .home-intro-wrapper {
     padding-top: 1em;
+}
+
+
+.creation {
+    margin: 0 auto;
 }

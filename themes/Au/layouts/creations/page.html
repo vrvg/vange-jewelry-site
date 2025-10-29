@@ -27,10 +27,13 @@
         {{/* In layouts/creations/single.html */}}
 
 {{ with .Params.image_main }}
-    {{/* 1. Get the image resource using the path from Front Matter */}}
-    {{- $imgResource := $.Page.Resources.GetMatch . -}}
+    {{/* CRITICAL FIX: Anchor the image search to the current page ($) and use the image parameter */}}
+    {{- $imgResource := $.Page.Resources.GetMatch . -}} 
 
     {{- if $imgResource }}
+        {{/* 1. Anchor the current page to a consistent variable for clarity */}}
+        {{- $page := $.Page -}}
+
         {{/* 2. Process the image to create responsive sizes */}}
         {{- $small := $imgResource.Resize "600x" -}}
         {{- $medium := $imgResource.Resize "1200x" -}}
@@ -38,10 +41,11 @@
 
         <figure class="featured-image">
             <img 
-                src="{{ $small.RelPermalink }}"  
+                src="{{ $small.RelPermalink }}" 
                 srcset="{{ $srcset }}" 
                 sizes="(max-width: 800px) 100vw, 900px"
-                alt="{{ $.Params.alt_text | default $.Title }}"
+                {{/* Ensure alt text is pulled from the main page context ($page) */}}
+                alt="{{ $page.Params.alt_text | default $page.Title }}" 
             />
         </figure>
     {{ end }}

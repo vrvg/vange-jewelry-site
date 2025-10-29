@@ -13,7 +13,9 @@
 @use 'header';
 @use 'nav';
 @use 'tags';
-@use 'pagination'; 
+@use 'pagination';
+
+@use 'components.scss'; 
 
 // 4. FOOTER
 @use 'footer';

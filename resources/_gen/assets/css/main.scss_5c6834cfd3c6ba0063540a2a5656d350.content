@@ -378,6 +378,203 @@ nav > ul > li > a:hover {
   cursor: default;
 }
 
+.tag {
+  background-color: #1C1C1C;
+  border: 1px solid #C79F5E;
+  color: #C79F5E;
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.tag:hover {
+  background-color: #C79F5E;
+  color: #1C1C1C;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+figure {
+  margin: 2em auto;
+  padding: 0;
+  max-width: 100%;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgba(199, 159, 94, 0.5);
+}
+
+figcaption {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  color: #A9A9A9;
+  margin-top: 0.5em;
+}
+
+.featured-image {
+  margin: 2em auto;
+  padding: 0;
+  max-width: 100%;
+  text-align: center;
+}
+
+.featured-image > img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgba(199, 159, 94, 0.5);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.8em 1.5em;
+  margin-top: 1em;
+  background-color: #C79F5E;
+  color: #1C1C1C;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+.btn-primary:hover {
+  background-color: rgb(179.5483870968, 134.9400921659, 62.4516129032);
+  color: #1C1C1C;
+}
+
+.link-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #1C1C1C;
+  border: 1px solid #C79F5E;
+  border-radius: 4px;
+  padding: 1.5em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+.link-item a {
+  text-decoration: none;
+  color: #C79F5E;
+}
+.link-item p {
+  margin: 0.5em 0;
+  max-width: none;
+  text-align: left;
+  font-size: 0.9em;
+}
+.link-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(199, 159, 94, 0.2);
+}
+
+.featured-creation {
+  /* Use strong margins to separate this section from the links and introductory text */
+  margin: 4em auto;
+  text-align: center;
+  /* Constrain the featured block slightly narrower than the main content for focus */
+  max-width: 900px;
+  /* Style the main title for this section */
+}
+.featured-creation > h3 {
+  color: #F7F7F7;
+  margin-bottom: 2em;
+}
+
+.creation-summary {
+  border: 2px solid #C79F5E;
+  padding: 2em;
+  border-radius: 6px;
+  text-align: left;
+  background-color: #111111; /* Slightly darker background for depth */
+}
+.creation-summary:hover {
+  box-shadow: 0 0 20px rgba(199, 159, 94, 0.4);
+  transform: translateY(-2px);
+}
+.creation-summary {
+  /* Styles for the title of the creation */
+}
+.creation-summary .creation-title {
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.creation-summary .creation-title a {
+  color: #C79F5E;
+  text-decoration: none;
+}
+.creation-summary {
+  /* Styles for the summary text */
+}
+.creation-summary .creation-summary-text {
+  max-width: none;
+  text-align: left;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+}
+
+.creation-summary-card {
+  /* Use dark background for high contrast */
+  background-color: #111111;
+  border: 1px solid #C79F5E;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Keeps the border clean around the image */
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.creation-summary-card:hover {
+  /* Subtly lift the card on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(199, 159, 94, 0.4);
+}
+.creation-summary-card {
+  /* Image Styling */
+}
+.creation-summary-card .card-image-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Ensure the image is the primary focus */
+  border-bottom: 1px solid #C79F5E;
+}
+.creation-summary-card {
+  /* Text Content */
+}
+.creation-summary-card .card-body {
+  padding: 1.5em;
+}
+.creation-summary-card .card-title a {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2em;
+  color: #C79F5E;
+  text-decoration: none;
+}
+.creation-summary-card .card-summary {
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  max-width: none; /* Override measure constraint for the summary */
+}
+
+/* Ensures the image never exceeds the width of its parent container */
+/* Maintains aspect ratio when scaling */
+/* Vertical alignment for images that might be inline content (e.g., logos) */
+.home-intro-wrapper {
+  padding-top: 1em;
+}
+
+.creation {
+  margin: 0 auto;
+}
+
 footer {
   /* SCSS for Sticky Footer (Ensures it stays at the bottom when content is short) */
   margin-top: auto;
