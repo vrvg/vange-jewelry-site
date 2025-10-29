@@ -3,3 +3,6 @@ node_modules
 
 # exclude Hugo's output
 public
+
+# extras
+.DS_Store
