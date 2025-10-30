@@ -1,0 +1,86 @@
+// themes/Au/assets/css/_pagination.scss
+
+// Assuming variables are imported globally (e.g., @use 'variables' as vars;)
+
+@use 'variables' as vars;
+
+// ---------------------------------------------
+// PAGINATION CONTAINER (.pagination)
+// ---------------------------------------------
+
+.pagination {
+    /* Use Flexbox to center the list of page links */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+    /* Reset default list styles and add top margin for separation */
+    list-style: none;
+    padding: 0;
+    margin: vars.$spacing-lg auto; 
+    
+    /* Optional: constrain width on large screens to keep the element tidy */
+    max-width: 400px;
+}
+
+// ---------------------------------------------
+// INDIVIDUAL PAGE ITEMS (.page-item)
+// ---------------------------------------------
+
+.page-item {
+    /* Gives each button a uniform size and border */
+    border: 1px solid vars.$text-muted; /* Subtle light gray border */
+    margin: 0 2px; /* Small space between buttons */
+    border-radius: 3px;
+    
+    /* Ensures the list item doesn't stack in the vertical direction */
+    display: inline-block;
+}
+
+// ---------------------------------------------
+// PAGE LINKS (.page-link)
+// ---------------------------------------------
+
+.page-link {
+    /* Makes the entire area clickable and styles the text */
+    display: block;
+    padding: 0.5em 0.8em;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-family: vars.$font-sans;
+    
+    /* Default link color (muted) */
+    color: vars.$text-muted; 
+    
+    /* Inverts color for readability and brand aesthetic */
+    background-color: vars.$charcoal-dark; 
+    transition: all 0.2s ease;
+    
+    /* Inherits border radius */
+    border-radius: 3px; 
+}
+
+/* Hover State */
+.page-item:not(.active):not(.disabled) .page-link:hover {
+    color: vars.$gold-accent;
+    background-color: vars.$charcoal-darker; /* Subtle shade change */
+    border-color: vars.$gold-accent;
+}
+
+// ---------------------------------------------
+// ACTIVE AND DISABLED STATES
+// ---------------------------------------------
+
+/* Active Page (The page the user is currently on) */
+.page-item.active .page-link {
+    color: vars.$charcoal-dark; /* Dark text */
+    background-color: vars.$gold-accent; /* Gold background */
+    font-weight: 700;
+    border-color: vars.$gold-accent;
+}
+
+/* Disabled Links (e.g., "Previous" on the first page) */
+.page-item.disabled .page-link {
+    color: vars.$charcoal-darker; /* Very dark gray, almost invisible */
+    cursor: default;
+}

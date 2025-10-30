@@ -1,0 +1,96 @@
+// themes/Au/assets/sass/layout/_header.scss
+
+@use 'abstracts/variables' as vars;
+@use 'abstracts/mixins' as mixins;
+
+header {
+    // Structural positioning, using variables where possible
+    position: sticky;
+    top: 0;
+    z-index: vars.$z-index-header; 
+    
+    // Background and border styles
+    background-color: rgba(vars.$charcoal-dark, 0.85);
+    border-bottom: 0.1em solid vars.$color-primary;
+     background-image: url('/vange-jewelry-stroke-version.svg');
+ background-position: center top;
+ background-repeat: repeat-x;
+ background-blend-mode: luminosity;
+ background-size: 35px 35px;
+ background-attachment: fixed;
+    
+    // Layout and alignment (Flexbox is excellent for headers)
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    // Spacing
+    padding: vars.$spacing-xs vars.$spacing-md; // .25em 1.5em from your original CSS
+    
+    // Performance enhancement for transparency/blur
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    // Ensure it handles overflowing content (like a wide navigation list)
+    overflow-x: auto; 
+    overflow-y: hidden;
+}
+
+// Sub-components within the header (using specific selectors)
+.logo-and-title {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-sm; 
+    flex: 0 1 auto; // Prevent logo from shrinking
+}
+
+.site-title {
+    font-family: vars.$font-logo;
+}
+
+header img {
+    max-height: vars.$spacing-md; // Use a specific height variable if you define one
+    min-width: 80px; 
+}
+
+.main-nav {
+    flex: 1 1 auto; // Allows the navigation to take up remaining space
+    width: auto;
+    margin: 0 auto;
+    
+    & > ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: vars.$spacing-xs;
+    }
+}
+
+
+// Mobile Responsiveness (using your mixin)
+@include mixins.media-down(tablet) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: vars.$spacing-xs vars.$spacing-md;
+    }
+    
+    .logo-and-title {
+        flex-direction: column;
+        gap: vars.$spacing-xs;
+        padding-bottom: vars.$spacing-xs;
+    }
+    
+    .main-nav {
+        text-align: center;
+        margin-top: vars.$spacing-xs;
+    }
+    
+    .main-nav > ul {
+        justify-content: center;
+    }
+}

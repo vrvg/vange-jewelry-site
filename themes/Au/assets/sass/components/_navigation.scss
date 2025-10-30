@@ -1,0 +1,69 @@
+// themes/Au/assets/sass/components/_navigation.scss
+
+@use 'abstracts/variables' as vars;
+@use 'abstracts/mixins' as mixins;
+
+// Styles for the main site navigation list items and links (inside the header)
+.main-nav {
+    & > ul > li {
+        flex: none;
+        text-align: center;
+        padding: 0 vars.$spacing-xs; 
+        
+        & > a {
+            font-size: vars.$font-size-base;
+            padding: vars.$spacing-xs 0; // Padding ensures a larger clickable area
+            
+            // Your custom hover state logic
+            &:hover {
+                color: vars.$color-primary;
+            }
+        }
+        
+        // Mobile text size adjustment (using your mixin)
+        @include mixins.media-down(tablet) {
+            & > a {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+// Styles for the footer navigation
+.footer-nav {
+    & > ul > li > a {
+        color: vars.$color-primary;
+        
+        &:hover {
+            color: vars.$text-light;
+        }
+    }
+}
+
+// Styles for sidebar/secondary navigation (e.g., .creation-list)
+.creation-list {
+    h2 {
+        font-size: 1.2em;
+        text-align: left;
+        margin-top: 0;
+        border-bottom: 1px solid vars.$color-primary;
+        padding-bottom: vars.$spacing-xs;
+    }
+    
+    ul a {
+        display: block;
+        padding: 0.2em 0;
+        font-size: 0.9em;
+        color: vars.$color-primary;
+    }
+    
+    .sidebar-separator {
+        border-bottom: 1px solid rgba(vars.$color-primary, 0.4);
+        margin: vars.$spacing-xs 0 vars.$spacing-sm;
+    }
+    
+    .active-sidebar-link a {
+        font-weight: 700;
+        color: vars.$text-light; // Highlight the active link
+    }
+}

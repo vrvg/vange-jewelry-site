@@ -1,0 +1,42 @@
+// themes/Au/assets/sass/main.scss (FULLY CORRECTED SASS MODULE STRUCTURE)
+
+// ----------------------------------------------------------------------
+// 1. CONFIGURATION (Load FIRST)
+// ----------------------------------------------------------------------
+// Load variables with 'vars' namespace (for variables)
+@use 'abstracts/variables' as vars; 
+// Load mixins with 'mixins' namespace (for @include mixins.mixin-name)
+@use 'abstracts/mixins' as mixins; 
+
+
+// ----------------------------------------------------------------------
+// 2. BASE STYLES (Output CSS)
+// NOTE: Use @use for everything and assign a unique namespace.
+// ----------------------------------------------------------------------
+@use 'base/reset';
+@use 'base/typography';
+
+// ----------------------------------------------------------------------
+// 3. LAYOUT/GRID
+// ----------------------------------------------------------------------
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/grid';
+
+// ----------------------------------------------------------------------
+// 4. COMPONENTS (Modules)
+// ----------------------------------------------------------------------
+@use 'components/button';
+@use 'components/card';
+@use 'components/navigation';
+
+// ----------------------------------------------------------------------
+// 5. PAGES
+// ----------------------------------------------------------------------
+@use 'pages/home';
+@use 'pages/content';
+
+// ----------------------------------------------------------------------
+// 6. UTILITIES (Helps & Overrides)
+// ----------------------------------------------------------------------
+@use 'utilities/helpers';

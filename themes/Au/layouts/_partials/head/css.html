@@ -1,4 +1,4 @@
-{{ with resources.Get "css/main.scss" }}
+{{ with resources.Get "sass/main.scss" }}
   {{ $opts := dict
     "enableSourceMap" hugo.IsDevelopment
     "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")

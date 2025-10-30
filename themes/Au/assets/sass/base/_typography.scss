@@ -1,0 +1,88 @@
+// themes/Au/assets/sass/base/_typography.scss
+
+@use 'abstracts/variables' as vars;
+@use 'abstracts/mixins' as mixins;
+
+html {
+    // Apply fluid typography scale from your existing CSS:
+    // This value is usually set in the body or html to establish the root font size.
+    // Example using a clamp function (if you implement it via SASS):
+    // font-size: clamp(16px, 1.5vw, 22px);
+    font-size: 100%; // Fallback to 16px if not using clamp
+}
+
+body {
+    // Set the default font family, color, and line height using your variables
+    font-family: vars.$font-sans;
+    font-size: vars.$font-size-base; // Should be 1em (or whatever your clamp resolves to)
+    color: vars.$text-light;
+    line-height: vars.$line-height-base; // Should be 1.5
+    
+    // You can include the anti-aliasing mixin here if desired:
+    // @include text-smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include mixins.font-serif; // Use your defined mixin or apply font-family directly
+    color: vars.$color-primary; // Use the gold accent color
+    line-height: 1.2; // Tighter line-height for headings
+}
+
+// Establish a hierarchical font size scale and spacing for rhythm
+h1 {
+    font-size: 2.5em;
+    margin-top: vars.$spacing-lg;
+    margin-bottom: vars.$spacing-md;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: vars.$spacing-lg;
+    margin-bottom: vars.$spacing-md;
+}
+// ... continue down to h6 using your desired scale and spacing variables
+
+p {
+    // Styles for optimal reading measure and alignment
+    max-width: vars.$optimal-measure; // Limits line length to ~65 characters
+    margin-top: vars.$spacing-sm;
+    margin-bottom: vars.$spacing-sm;
+    text-align: justify; // If desired, but left-aligned is often preferred
+}
+
+// Blockquotes, emphasizing text, etc.
+blockquote {
+    // Default styling for blockquotes
+    margin: vars.$spacing-lg 0;
+    padding-left: vars.$spacing-md;
+    border-left: 4px solid vars.$color-secondary;
+    font-style: italic;
+    color: vars.$text-muted;
+}
+
+a {
+    color: vars.$color-primary;
+    text-decoration: none;
+    
+    // Use your transition mixin for smooth hover effects
+    @include mixins.transition(color, text-decoration); 
+    
+    &:hover {
+        color: vars.$text-light;
+        text-decoration: underline;
+    }
+    
+    &:visited {
+        // You can set a specific visited color if desired
+        color: vars.$text-muted;
+    }
+}
+
+ul, ol {
+    // Since you removed padding/margin/list-style in _reset, you may add padding back here 
+    // if you want some structure for lists without custom classes.
+    padding-left: vars.$spacing-md; 
+    
+    // Add default bullets back if needed (or keep them off if you use lists for nav)
+    // list-style-type: disc; 
+}

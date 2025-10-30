@@ -1,0 +1,160 @@
+// themes/Au/assets/css/_layout.scss
+
+@use 'variables' as vars;
+// ---------------------------------------------
+// 1. CONTENT WRAPPER (.container)
+// ---------------------------------------------
+
+.container {
+    // This wrapper constrains the main scrollable content
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 8em;
+    
+    /* Gutters for mobile */
+    padding: 0 16px;
+    padding-bottom: 16px; /* Keep bottom padding for mobile scroll buffer */
+    box-sizing: border-box;
+
+    //background-color: rgba(28, 28, 28, .95);
+    background-color: vars.$charcoal-dark;
+    border-right: 0.1em solid vars.$gold-accent;
+    border-left: 0.1em solid vars.$gold-accent;
+}
+
+// ---------------------------------------------
+// 2. MAIN CONTENT AREA (Spacing and Alignment)
+// ---------------------------------------------
+
+main {
+    flex-grow: 1;
+    display: block;
+    //margin: 0 auto;
+    text-align: left;
+
+    //border-right: 0.1em solid vars.$gold-accent;
+    
+    background-color: rgba(28, 28, 28, 0.35); 
+    //backdrop-filter: blur(1px);
+    //-webkit-backdrop-filter: blur(5px);
+
+    /* Added generous vertical padding for separation */
+    padding: vars.$spacing-lg vars.$spacing-md;
+
+    flex-shrink: 0;
+}
+
+// ---------------------------------------------
+// 3. DESKTOP OVERRIDE (768px+ Layout)
+// ---------------------------------------------
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .container {
+        /* Max width for readable content (IA Principle) */
+        max-width: vars.$content-max-width;
+        margin: 0 auto;
+        margin-bottom: 8em;
+        padding: 0 1em; /* FIX: Remove horizontal and vertical gutters on desktop */
+    }
+}
+
+// ---------------------------------------------
+// 4. HOMEPAGE LINK GRID (Exploration Menu)
+// ---------------------------------------------
+
+.home-links-container {
+    border-top: 0.1em solid vars.$gold-accent;
+}
+
+.home-links-grid {
+    text-align: center;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: vars.$spacing-md;
+    margin-top: vars.$spacing-lg;
+}
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .links-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// ---------------------------------------------
+// 5. CREATION SINGLE PAGE (Two-Column Layout)
+// ---------------------------------------------
+
+.creation-container {
+    display: block;
+    padding: vars.$spacing-md 0;
+}
+
+@media (min-width: vars.$breakpoint-tablet) {
+    .creation-container {
+        /* Desktop: Creates the sidebar + main content structure */
+        display: flex;
+        flex-direction: row;
+        gap: vars.$spacing-lg;
+        
+        /* Ensure layout is contained within the readable width */
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+/* Sidebar Styles */
+.creation-list {
+    flex: 0 0 220px;
+    text-align: left;
+    padding-right: vars.$spacing-md;
+    
+    & h2 {
+        font-size: 1.2em;
+        text-align: left;
+        margin-top: 0;
+        border-bottom: 1px solid vars.$gold-accent;
+        padding-bottom: 0.5em;
+    }
+    & ul a {
+        display: block;
+        padding: 0.2em 0;
+        font-size: 0.9em;
+        color: vars.$gold-accent;
+    }
+    
+    .sidebar-separator {
+        border-bottom: 1px solid rgba(vars.$gold-accent, 0.4);
+        margin: 0.5em 0 vars.$spacing-sm;
+    }
+    
+    .active-sidebar-link a {
+        font-weight: 700;
+        color: vars.$text-light;
+    }
+}
+
+/* Main Content Area Styles */
+.creation {
+    flex: 1 1 auto;
+}
+
+/* Specs Grid (Materials/Techniques) */
+.specs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: vars.$spacing-md;
+    
+    & div {
+        flex: 1 1 200px;
+    }
+}

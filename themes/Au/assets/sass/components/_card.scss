@@ -1,0 +1,73 @@
+// themes/Au/assets/sass/components/_card.scss
+
+@use 'abstracts/variables' as vars;
+@use 'abstracts/mixins' as mixins;
+
+/**
+ * Base Card Style: Applies shared structural and visual traits to all card types.
+ */
+.card-base {
+    background-color: vars.$charcoal-darker; // A slightly darker background
+    border: 1px solid vars.$color-primary;
+    border-radius: 4px;
+    padding: vars.$spacing-md;
+    text-align: left;
+    overflow: hidden; // Important for containing image content
+    
+    // Interactive hover state
+    @include mixins.transition(transform, box-shadow);
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(vars.$color-primary, 0.2); 
+    }
+}
+
+/**
+ * Link Item Card: Used for simple directory links (e.g., your .link-item)
+ */
+.link-item {
+    @extend .card-base; // Inherit all base card styles
+    display: flex;
+    flex-direction: column;
+    padding: vars.$spacing-md;
+    
+    & a {
+        // Link specific styles inside the card
+        text-decoration: none;
+        color: vars.$color-primary;
+    }
+    
+    & p {
+        margin: vars.$spacing-xs 0;
+        max-width: none;
+        text-align: left;
+        font-size: 0.9em;
+    }
+}
+
+/**
+ * Summary Card: Used for your primary content previews (e.g., your .creation-summary-card)
+ */
+.creation-summary-card {
+    @extend .card-base;
+    padding: 0; // Remove padding as content is styled inside
+    
+    .card-image-link img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid vars.$color-primary;
+    }
+    
+    .card-body {
+        padding: vars.$spacing-md;
+    }
+    
+    .card-title a {
+        @include mixins.font-serif;
+        font-size: 1.2em;
+        color: vars.$color-primary;
+        text-decoration: none;
+    }
+}

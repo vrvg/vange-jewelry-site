@@ -18,11 +18,9 @@
 
     <section class="creation">
         
-        <h2 class="creation-title">{{ $page.Title }}</h2>
         
-        <div class="creation-narrative">
-            {{ $page.Content }}
-        </div>
+        
+        
 
         {{/* In layouts/creations/single.html */}}
 
@@ -50,6 +48,10 @@
         </figure>
     {{ end }}
 {{ end }}
+<h2 class="creation-title">{{ $page.Title }}</h2>
+<div class="creation-narrative">
+            {{ $page.Content }}
+        </div>
         
         <h3 class="technical-heading">Materials & Techniques</h3>
 

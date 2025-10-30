@@ -1,0 +1,29 @@
+// themes/Au/assets/sass/pages/_home.scss
+
+@use 'abstracts/variables' as vars;
+@use 'abstracts/mixins' as mixins;
+
+.home-intro-wrapper {
+    // Custom vertical spacing for the homepage introduction
+    padding-top: vars.$spacing-lg * 2;
+    padding-bottom: vars.$spacing-lg; 
+    text-align: center;
+}
+
+.featured-creation {
+    margin: vars.$spacing-lg * 2 auto; // Extra large spacing to make it stand out
+    max-width: 900px;
+    text-align: center;
+    
+    & > h3 {
+        color: vars.$text-light;
+        margin-bottom: vars.$spacing-lg;
+    }
+}
+
+// Example of overriding a base layout for the home page only
+@include mixins.media-up(wide) {
+    .home-links-grid .links-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

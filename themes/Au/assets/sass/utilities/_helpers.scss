@@ -1,0 +1,80 @@
+// themes/Au/assets/sass/utilities/_helpers.scss
+
+@use 'abstracts/variables' as vars;
+//@use 'abstracts/mixins' as mixins;
+
+/* Text Alignment */
+.u-text-center {
+    text-align: center !important;
+}
+
+.u-text-left {
+    text-align: left !important;
+}
+
+.u-text-right {
+    text-align: right !important;
+}
+
+/* Display */
+.u-d-none {
+    display: none !important;
+}
+
+.u-d-block {
+    display: block !important;
+}
+
+// Accessibly Hiding Content (using your placeholder)
+.u-visually-hidden {
+    @extend %visually-hidden !optional;
+}
+
+/* Margin and Padding (Micro-Framework) */
+
+// Note: Use a loop if you have many variations, but simple is fine for now.
+.u-margin-none {
+    margin: 0 !important;
+}
+
+.u-margin-top-sm {
+    margin-top: vars.$spacing-sm !important;
+}
+
+.u-padding-bottom-lg {
+    padding-bottom: vars.$spacing-lg !important;
+}
+
+/* Floats and Positioning */
+.u-float-left {
+    float: left !important;
+}
+
+.u-float-right {
+    float: right !important;
+}
+
+.u-clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Z-Index Overrides */
+.u-z-modal {
+    z-index: vars.$z-index-modal !important;
+}
+
+/* Text Color Overrides */
+.u-color-primary {
+    color: vars.$color-primary !important;
+}
+
+.u-color-muted {
+    color: vars.$text-muted !important;
+}
+
+/* Font Weight */
+.u-font-weight-bold {
+    font-weight: 700 !important;
+}
