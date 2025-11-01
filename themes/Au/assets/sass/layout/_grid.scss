@@ -32,7 +32,16 @@ body {
     
     // Ensure content stays inside the container
     box-sizing: border-box; 
-    overflow: hidden; 
+    overflow: hidden;
+
+    background-color: rgba(vars.$charcoal-dark, 0.85);
+    border-bottom: 0.1em solid vars.$color-primary;
+    background-image: url('/vange-jewelry-stroke-version.svg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-blend-mode: luminosity;
+    background-size: 2em 2em;
+    //background-attachment: fixed;
 }
 
 main {

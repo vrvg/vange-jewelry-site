@@ -166,19 +166,17 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(28, 28, 28, 0.85);
+  background-color: #1C1C1C;
+  opacity: 0.85;
   border-bottom: 0.1em solid #C79F5E;
-  background-image: url("/vange-jewelry-stroke-version.svg");
-  background-position: center top;
-  background-repeat: repeat-x;
-  background-blend-mode: luminosity;
-  background-size: 35px 35px;
-  background-attachment: fixed;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5em 1.5em;
+  padding-top: 0.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   overflow-x: auto;
@@ -194,6 +192,9 @@ header {
 
 .site-title {
   font-family: "IBM Plex Mono", monospace;
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 header img {
@@ -217,11 +218,6 @@ header img {
 }
 
 @media (max-width: 767.98px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5em 1.5em;
-  }
   .logo-and-title {
     flex-direction: column;
     gap: 0.5em;
@@ -229,10 +225,11 @@ header img {
   }
   .main-nav {
     text-align: center;
-    margin-top: 0.5em;
+    margin-top: 0;
   }
   .main-nav > ul {
     justify-content: center;
+    margin-top: 0;
   }
 }
 footer {
@@ -292,6 +289,13 @@ body {
   border-left: 0.1em solid #C79F5E;
   box-sizing: border-box;
   overflow: hidden;
+  background-color: rgba(28, 28, 28, 0.85);
+  border-bottom: 0.1em solid #C79F5E;
+  background-image: url("/vange-jewelry-stroke-version.svg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-blend-mode: luminosity;
+  background-size: 2em 2em;
 }
 
 main {

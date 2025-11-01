@@ -4,29 +4,32 @@
 @use 'abstracts/mixins' as mixins;
 
 header {
-    // Structural positioning, using variables where possible
+    // Structural positioning
     position: sticky;
     top: 0;
     z-index: vars.$z-index-header; 
     
     // Background and border styles
-    background-color: rgba(vars.$charcoal-dark, 0.85);
+    background-color: vars.$charcoal-dark;
+    opacity: 0.85;
+    //background-color: rgba(vars.$charcoal-dark, 0.85);
     border-bottom: 0.1em solid vars.$color-primary;
-     background-image: url('/vange-jewelry-stroke-version.svg');
- background-position: center top;
- background-repeat: repeat-x;
- background-blend-mode: luminosity;
- background-size: 35px 35px;
- background-attachment: fixed;
     
     // Layout and alignment (Flexbox is excellent for headers)
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    //justify-content: space-around;
     
     // Spacing
-    padding: vars.$spacing-xs vars.$spacing-md; // .25em 1.5em from your original CSS
+    //padding: vars.$spacing-xs vars.$spacing-md; // .25em 1.5em from your original CSS
+    padding-top: vars.$spacing-xs;
+    padding-left: vars.$spacing-md;
+    padding-right: vars.$spacing-md;
+    padding-top: vars.$spacing-xs;
+    padding-bottom: vars.$spacing-xs;
+
+    //margin-top: 0;
     
     // Performance enhancement for transparency/blur
     backdrop-filter: blur(5px);
@@ -47,6 +50,10 @@ header {
 
 .site-title {
     font-family: vars.$font-logo;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    //margin-left: 1em;
 }
 
 header img {
@@ -74,9 +81,9 @@ header img {
 // Mobile Responsiveness (using your mixin)
 @include mixins.media-down(tablet) {
     header {
-        flex-direction: column;
-        align-items: center;
-        padding: vars.$spacing-xs vars.$spacing-md;
+        //flex-direction: column;
+        //align-items: center;
+        //padding: vars.$spacing-xs vars.$spacing-md;
     }
     
     .logo-and-title {
@@ -87,10 +94,12 @@ header img {
     
     .main-nav {
         text-align: center;
-        margin-top: vars.$spacing-xs;
+        //margin-top: vars.$spacing-xs;
+        margin-top: 0;
     }
     
     .main-nav > ul {
         justify-content: center;
+        margin-top: 0;
     }
 }
