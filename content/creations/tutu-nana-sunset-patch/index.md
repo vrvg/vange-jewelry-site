@@ -12,7 +12,7 @@ weight_grams = '25g'
 status = 'Available'
 price = 0.00
 summary = 'A brief, elegant description for the gallery listing.'
-image_main = 'images/tutu-nana-sunset-patch-worn.jpg'
+image_main = 'creations/tutu-nana-sunset-patch/images/tutu-nana-sunset-patch-worn.jpg'
 alt_text = 'Tutu Nana Sunset Patch - Main photo'
 tags = ''
 +++

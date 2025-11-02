@@ -16,13 +16,16 @@
             {{/* Assign current page to $page to prevent context loss */}}
             {{- $page := . -}} 
             
-            <article class="creation-summary-card">
+            <article class="creation-summary-card" style="background-image: url('{{ $page.Params.image_main | relURL }}'); background-position: center;background-attachment: fixed;">
                 
                 {{/* 1. Image Block: Use $page to safely access front matter params */}}
                 {{ with $page.Params.image_main }}
-                    <a href="{{ $page.RelPermalink }}" class="card-image-link">
+                    <!--<a href="{{ $page.RelPermalink }}" class="card-image-link">
                         <img src="{{ . | relURL }}" alt="{{ $page.Params.alt_text | default $page.Title }}">
-                    </a>
+                    </a>-->
+                    <style>
+                        background-image: url('{{ . | relURL }}');
+                    </style>
                 {{ end }}
 
                 <div class="card-body">

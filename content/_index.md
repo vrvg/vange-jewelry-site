@@ -5,4 +5,4 @@ keywords: ["handcrafted jewelry", "metal arts portfolio", "metalsmithing", "art 
 draft: false
 ---
 
-# a multifaceted approach to jewelry—no pun intended
+# a multifaceted approach to jewelry—pun intended

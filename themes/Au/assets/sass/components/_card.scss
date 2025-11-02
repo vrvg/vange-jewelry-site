@@ -52,7 +52,8 @@
 .creation-summary-card {
     @extend .card-base;
     padding: 0; // Remove padding as content is styled inside
-    
+    margin-bottom: 1em;
+
     .card-image-link img {
         width: 100%;
         height: auto;

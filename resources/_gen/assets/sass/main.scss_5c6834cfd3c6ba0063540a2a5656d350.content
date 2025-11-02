@@ -167,11 +167,12 @@ header {
   top: 0;
   z-index: 1000;
   background-color: #1C1C1C;
-  opacity: 0.85;
+  background-color: rgba(28, 28, 28, 0.65);
   border-bottom: 0.1em solid #C79F5E;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding-top: 0.5em;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -205,7 +206,6 @@ header img {
 .main-nav {
   flex: 1 1 auto;
   width: auto;
-  margin: 0 auto;
 }
 .main-nav > ul {
   list-style: none;
@@ -228,7 +228,6 @@ header img {
     margin-top: 0;
   }
   .main-nav > ul {
-    justify-content: center;
     margin-top: 0;
   }
 }
@@ -290,12 +289,11 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   background-color: rgba(28, 28, 28, 0.85);
-  border-bottom: 0.1em solid #C79F5E;
   background-image: url("/vange-jewelry-stroke-version.svg");
   background-position: top center;
   background-repeat: no-repeat;
   background-blend-mode: luminosity;
-  background-size: 2em 2em;
+  background-size: 3.5em 3.5em;
 }
 
 main {
@@ -433,6 +431,7 @@ main {
  */
 .creation-summary-card {
   padding: 0;
+  margin-bottom: 1em;
 }
 .creation-summary-card .card-image-link img {
   width: 100%;
