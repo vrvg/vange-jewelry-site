@@ -5,14 +5,6 @@
 
 body {
      background-color: vars.$charcoal-dark;
-
- /* Define the image source and set it to repeat */
- /*background-image: url('/vange-jewelry-stroke-version.svg');
- background-position: center;
- background-repeat: repeat-x;
- background-blend-mode: luminosity;
- background-size: 35px 35px;
- background-attachment: fixed;*/
 }
 
 .container {
@@ -52,7 +44,7 @@ main {
     
     // Background treatment for content area
     background-color: rgba(vars.$charcoal-dark, 0.85);
-    padding: vars.$spacing-lg vars.$spacing-md;
+    padding: vars.$spacing-lg vars.$spacing-xs;
     flex-shrink: 0; 
 }
 

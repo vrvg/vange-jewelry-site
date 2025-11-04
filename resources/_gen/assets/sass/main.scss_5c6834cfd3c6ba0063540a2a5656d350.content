@@ -168,7 +168,6 @@ header {
   z-index: 1000;
   background-color: #1C1C1C;
   background-color: rgba(28, 28, 28, 0.65);
-  border-bottom: 0.1em solid #C79F5E;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -268,13 +267,6 @@ footer > p {
 
 body {
   background-color: #1C1C1C;
-  /* Define the image source and set it to repeat */
-  /*background-image: url('/vange-jewelry-stroke-version.svg');
-  background-position: center;
-  background-repeat: repeat-x;
-  background-blend-mode: luminosity;
-  background-size: 35px 35px;
-  background-attachment: fixed;*/
 }
 
 .container {
@@ -301,7 +293,7 @@ main {
   display: block;
   text-align: left;
   background-color: rgba(28, 28, 28, 0.85);
-  padding: 2em 1.5em;
+  padding: 2em 0.5em;
   flex-shrink: 0;
 }
 
