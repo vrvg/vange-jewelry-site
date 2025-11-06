@@ -1,3 +1,6 @@
 [submodule "Au-theme"]
 	path = Au-theme
 	url = https://github.com/vrvg/Au-theme.git
+[submodule "themes/Au"]
+	path = themes/Au
+	url = https://github.com/vrvg/Au-theme.git
